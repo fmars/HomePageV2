@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars.me | Homepage - Jiacheng Feng  </title>
+	<link rel="shortcut icon" type="image/x-icon" href="static/stephen.ico" media="screen" />
+	<meta name="description" content="Fmars HomePage. I'm now a Software Engineer in Facebook. 
+	I believe that Inner happiness comes from self-sacrifice" />
+	<meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage, Facebook, Software Engineer" />
+	<meta name="author" content="Jiacheng Feng， 冯嘉程" />
+
+	<meta property="og:title" content="Fmars.me" />
+	<meta property="og:type" content="homepage" />
+	<meta property="og:url" content="http://fmars.me" />
+
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <link rel="stylesheet" href="static/css/bootstrap.css">    
+    <link rel="stylesheet" href="static/css/main.css">
+    
+  </head>
+
+  <body>
+
+    <div class="row">
+      <div class="nav">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+          <div class="container">
+            <ul class="pull-left">
+			  {% block index_header %}
+              <li class="tab"><a  href="index.html" >Me</a></li>
+              <li class="tab"><a class="tab-now" href="write.html" style="color:black">Write</a></li>
+              <li class="tab"><a href="read.html">Read</a></li>
+              <li class="tab"><a href="http://github.com/fmars/HomePage/tree/master/atfb">x</a></li>
+			  {% endblock %}
+            </ul>
+          </div>
+        </div>
+       </div> 
+    </div>
+
+    <h1 id="name" align='middle'>Fmars</h1>
+    <p id="belief" align='middle'><em>Inner happiness comes from self-sacrifice</em></p>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-6">
+	    {% block index_body %}
+		{% endblock %}
+      </div>
+
+      <div class="col-md-3">
+        <div id="find-me-at">
+          <ul>
+			<li><a target="_blank" href="https://github.com/fmars" >GitHub</a></li>
+            <li><a target="_blank" href="http://fmarss.blogspot.com/">Blogger</a></li>
+            <li><a target="_blank" href="http://www.linkedin.com/pub/jiacheng-feng/41/63b/3a6">LinkedIn</a></li>
+          </ul>
+          <div id="visit-map">
+            <script type="text/javascript" src="http://je.revolvermaps.com/2/4.js?i=4tkc0xttkin&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=0" async="async"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	{% block index_footer %}
+	{% endblock %}
+  </body>
+</html>

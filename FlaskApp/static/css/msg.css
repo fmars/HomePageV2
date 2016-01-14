@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'brandon-bold'; /*a name to be used later*/
+    src: url('../fonts/Brandon_bld.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'brandon-light'; /*a name to be used later*/
+    src: url('../fonts/Brandon_light.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'helvetica-neue'; /*a name to be used later*/
+    src: url('../fonts/HelveticaNeueLTPro-Md.otf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'sourcesanspro_re'; /*a name to be used later*/
+    src: url('../fonts/ProximaNovaReg.otf'); /*URL to font*/
+}
+
+
+@font-face {font-family:"F2U Scratch";src:url("../fonts/F2U_Scratch/F2U_Scratch.eot?") format("eot"),url("../fonts/F2U_Scratch/F2U_Scratch.woff") format("woff"),url("../fonts/F2U_Scratch/F2U_Scratch.ttf") format("truetype"),url("../fonts/F2U_Scratch/F2U_Scratch.svg#F2UScratch") format("svg");font-weight:normal;font-style:normal;}
+
+.msg_list {
+  margin-top:45px;
+  padding: 0px;
+  
+}
+.msg_head {
+  margin-left:20px;
+  cursor: pointer;
+  position: relative;
+  margin:1px;
+  width: 600px;
+  font-size:22px;
+  font-family: "sourcesanspro_re";
+}
+
+.msg_head a{
+  color: black;
+}
+.msg_msg {
+  padding: 5px 10px;
+  cursor: pointer;
+  position: relative;
+  margin:1px;
+  width: 600px;
+  font-size:22px;
+  font-family: "sourcesanspro_re";
+
+}
+.msg_body {
+  margin-left: 25px;
+  width: 560px;
+  font-size:16px;
+  font-family: "brandon-light";
+}
