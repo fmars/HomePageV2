@@ -14,7 +14,7 @@
 
 	<META http-equiv="Content-Type" content="text/html; charset=utf-8">    
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="static/css/Homepage.css">    
+	<link rel="stylesheet" href="static/css/HomepageBase.css"> 
   </head>
 
   <body>
@@ -25,22 +25,18 @@
 					<div class="row">
 						<div class="col-md-2"></div>
 							<div class="col-md-6">
-					<ul class="nav navbar-nav">
-
-						{% block home_page_nav %}
-							<li class="tab"><a  href="me" >Me</a></li>
-							<li class="tab"><a href="write">Write</a></li>
-							<li class="tab"><a href="read">Read</a></li>
-							<li class="tab"><a href="http://github.com/fmars/HomePage/tree/master/atfb">x</a></li>
-						{% endblock %}
-
-					</ul>
+								<ul class="nav navbar-nav">
+									{% block home_page_nav %}
+										<li class="navbar_font"><a href="me" >Me</a></li>
+										<li class="navbar_font"><a href="write">Write</a></li>
+										<li class="navbar_font"><a href="read">Read</a></li>
+									{% endblock %}
+								</ul>
 							</div>
 					</div>	
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-		
 		
 		{% block home_page_header %}
     <h1 id="name" align='middle'>Fmars</h1>

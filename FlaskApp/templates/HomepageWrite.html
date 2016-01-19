@@ -1,6 +1,8 @@
 {% extends "HomepageBase.html" %}
 
 {% block home_page_body %}
+	<link rel="stylesheet" href="static/css/msg.css">   
+	
 	<!-- Required Javascript -->
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript">
@@ -14,12 +16,15 @@
 		});
 	</script>
 	
-	<h2 id='title-fmars'>Write</h2>
+	<h2 class='title-fmars'>Articles</h2>
 	<div id="write-content">
 		<div class="msg_list">
 			{% for dir in file_tree.children %}
 			{% set num = 0 %}
-			<p class="msg_head">&oplus; {{ dir.showName }} <span style="font-size:17px; float:right">{{ dir.showDate }}</span></p>
+			<p class="msg_head">
+				&oplus; {{ dir.showName }} 
+				<span style="font-size:17px; float:right">{{ dir.showDate }}</span>
+			</p>
 			<div class="msg_body">
 				{% for file in dir.children %}
 				<p>
