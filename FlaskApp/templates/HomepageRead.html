@@ -1,0 +1,62 @@
+{% extends "HomepageBase.html" %}
+
+{% block home_page_body %}
+	<link rel="stylesheet" href="static/css/msg.css">   
+	
+	<!-- Required Javascript -->
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//hide the all of the element with class msg_body
+			$(".msg_body").hide();
+			//toggle the componenet with class msg_body
+			$(".msg_head").click(function(){
+				$(this).next(".msg_body").slideToggle(250);
+			});
+		});
+	</script>
+	
+	<h2 class='title-fmars'>Readings</h2>
+	<div>
+		<div class="msg_list">
+		
+			<p class="msg_head">&rarr;浪潮之巅<span style="font-size:17px; float:right">03/2015</span></p>
+			<div class="msg_body">
+				<ul>
+					<li class="msg_body_review">What is the next technical revolution?</li>
+				</ul>
+			</div>
+			
+			<p class="msg_head">&rarr;链接、装载与库<span style="font-size:17px; float:right">07/2015</span></p>
+			<div class="msg_body">
+				<ul>
+					<li class="msg_body_review">Everything is CPU, Memory and I/Os</li>
+				</ul>
+			</div>
+			
+			<p class="msg_head">&rarr;Effective Modern C++: Improve Your Use of C++11 and C++14<span style="font-size:17px; float:right">09/2015</span></p>
+			<div class="msg_body">
+				<ul>
+					<li class="msg_body_review">C++11 is so much amazing so much awesome. And I think it's time to switch to another one, maybe Python, for most of the cases.</li>
+				</ul>
+			</div>
+			
+			<p class="msg_head">&rarr;Learn Vimscript the Hard Way<span style="font-size:17px; float:right">11/2015</span></p>
+			<div class="msg_body">
+				<ul>
+					<li class="msg_body_review"><a target="_blank" href="https://github.com/fmars/reasier">Reasier (make Read easier)</a></li>
+				</ul>
+			</div>
+			
+			<p class="msg_head">&rarr;Flask-Python<span style="font-size:17px; float:right">01/2016</span></p>
+			<div class="msg_body">
+				<ul>
+					<li class="msg_body_review"><a target="_blank" href="https://github.com/fmars/HomePageV2">HomePageV2</a></li>
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+{% endblock %}
+
+

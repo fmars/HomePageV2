@@ -26,6 +26,10 @@ def render_homepage_write():
     file_tree = read_file_tree(path)
     app.logger.debug(file_tree)
     return render_template("HomepageWrite.html", file_tree = file_tree)
+    
+@app.route("/read")
+def render_homepage_read():
+    return render_template("HomepageRead.html")    
 
 app.debug = True
     
