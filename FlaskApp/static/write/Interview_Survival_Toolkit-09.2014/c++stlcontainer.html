@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><span style="font-size: large;">Here is a brief summary talking about common STL Container used in Leetcode problems.</span><br />
+<br />
+<br />
+<ol>
+<li>Sequence Containers:</li>
+<ol>
+<li>Vector.&nbsp;</li>
+<ol>
+<li>Just like the array in c language that random access runs in constant time.&nbsp;</li>
+<li>Implemented by the dynamic array ensuring that the amortized time of push_back and pop_back is constant time.&nbsp;</li>
+<li>Modify elements other then the last element run in O(n) time&nbsp;</li>
+</ol>
+<li>Deque.</li>
+<ol>
+<li>Random access runs in constant time as well</li>
+<li>Implemented by double dynamic array I guess thus can push and pop elements both at the end and the front in constant time</li>
+<li>Modify elements other than the first and last elements run in O(n) time.</li>
+</ol>
+<li>List</li>
+<ol>
+<li>Like linked list in c language that random access will runs in O(n) time</li>
+<li>Obviously that insert and delete element run in constant time</li>
+</ol>
+</ol>
+<li>Container Adapters:</li>
+<ol>
+<li>Stack and Queue.</li>
+<li>Priority Queue</li>
+</ol>
+<li>Associative Containers:</li>
+<ol>
+<li>Set.</li>
+<ol>
+<li>Implemented by binary search tree (not hash table), thus the time complexity of insert and erase are O(logn)</li>
+</ol>
+<li>Map</li>
+<ol>
+<li>The same method with set thus [ ] &nbsp;operator is O(logn)</li>
+</ol>
+<li>Unordered_Set and Unordered_Map</li>
+<ol>
+<li>New in C++11 that insert erase and [] operators run in O(1) or O(n)</li>
+<li>Implemented by hash table</li>
+<li>The advantage of set over unordered_set is set requires limited memory in proportion to the input size</li>
+</ol>
+</ol>
+</ol>
+Sequnce Containers can be used in Sort function directly with customized compare function.<br />
+<br />
+<br />
+<br />
+
+
+
+  </body>
+</html>

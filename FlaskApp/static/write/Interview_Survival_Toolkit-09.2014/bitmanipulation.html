@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><h3>
+1. Bit Operators</h3>
+<div>
+<ol>
+<li>&amp; ( bitwise and )</li>
+<li>| &nbsp; ( bitwise or )</li>
+<li>^ (xor)</li>
+<li>&lt;&lt;, &gt;&gt; (shift)</li>
+<li>! &nbsp; ( bitwise not, complement)</li>
+</ol>
+<h3>
+2. Usages</h3>
+</div>
+<div>
+<ul>
+<li>&amp; &nbsp; &nbsp; used to set a bit into 0</li>
+<li>| &nbsp; &nbsp; &nbsp; used to set a bit into 1</li>
+<li>^ &nbsp; &nbsp; &nbsp;used to check whether two bits are the same. ( thus can store information )</li>
+<li>&lt;&lt; &nbsp; &nbsp;used to perform the times 2 operation</li>
+</ul>
+<h3>
+3. How to set a sequence of bits into 0s or 1s</h3>
+</div>
+<div>
+<br /></div>
+<div>
+Let say we can an integer X and would like to set from i-th bit to j-th bit into 0s (or 1s).</div>
+<div>
+We first get a mask that all bits are 1 except the bits from i to j ( looks like 11111000..0011111)</div>
+<div>
+Finally &nbsp;X = X &amp; Mask&nbsp;</div>
+<div>
+<br /></div>
+<h3>
+4. How to get that mask</h3>
+<div>
+<br /></div>
+<div>
+How can we get the mask that all the bits are 1s except some are 0s ( all are 0s except some are 1s)</div>
+<div>
+In order to get some masks looks like this</div>
+<div>
+<ul>
+<li>00000111 : &nbsp; &nbsp; (1&lt;&lt;3)-1</li>
+<li>11100000 : &nbsp; &nbsp; ( !0 ) - ( (1&lt;&lt;5) -1 )</li>
+<li>11100111 : &nbsp; &nbsp; ((1&lt;&lt;3)-1) &nbsp;| &nbsp;(( !0 ) - ( (1&lt;&lt;5) -1 )) &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li>
+</ul>
+<h3>
+5. How to swap two variable without using extra variable</h3>
+</div>
+<div>
+<br /></div>
+<div>
+x = x ^ y</div>
+<div>
+y = x ^ y</div>
+<div>
+x = x ^ y</div>
+<div>
+<br /></div>
+<div>
+This shows that XOR operator could store extra information within one variable which could be used in some brain teaser.</div>
+<div>
+<br /></div>
+<h3>
+6.How to check if a integer is power of 2</h3>
+<div>
+<br /></div>
+<div>
+( ( x &amp; ( x -1 ) ) == 0 )</div>
+<div>
+All the integer which is power of 2 and 0 will return true.</div>
+<blockquote class="tr_bq">
+x = 0 ; &nbsp; &nbsp; &nbsp;// 2 ' 00000000<br />
+x-1 &nbsp; &nbsp; &nbsp; &nbsp;; &nbsp;// 2 ' 11111111<br />
+x &amp; ( x-1 )// 2 ' 00000000</blockquote>
+<div>
+<h3>
+6.Given a (decimal - e.g. 3.72) number that is passed in as a string, print the binary representation. If the number can not be represented accurately in binary, print “ERROR”</h3>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<span style="color: #231f20; font-family: MyriadPro-Regular; font-size: 9pt;"><br class="Apple-interchange-newline" /></span></div>
+<script src="https://gist.github.com/fmars/69664e3d6ca5c2ce2f0c.js"></script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><h3>
+1. What happens after you typing an URL into your browser</h3>
+<div>
+<ol>
+<li>Browser contacts with the DNS server to find out the IP address of URL</li>
+<li>DNS server return the requested IP address</li>
+<li>Browser builds up and connects with web server by TCP at port 80</li>
+<li>Browser send the http request to the server and server return the html code to browser</li>
+<li>Browser renders the display result of html code</li>
+<li>Browser terminates the connection when window is closed</li>
+</ol>
+<h3>
+2. DNS&nbsp;</h3>
+</div>
+<div>
+<ol>
+<li>Check if the URL has already been cached. If so just return the result (local Resolver)</li>
+<li>Preferred DNS server will query other DNS server RECURSIVELY / ITERATIVELY</li>
+</ol>
+<h3>
+3. TCP &amp; UDP</h3>
+</div>
+<div>
+<b>Transmission Control Protocol is a connection-oriented network protocol</b></div>
+<div>
+<ol>
+<li>Reliable: When you send a message by TCP you will know it will get there. If it or some parts of it lost on the way the server will re-request the lost part.</li>
+<li>The order is guaranteed by the sequence number</li>
+<li>HeavyWeighted: all the out of order parts will be re sent</li>
+</ol>
+<b>User Datagram Protocol is a connectless network protocol</b></div>
+<div>
+<ol>
+<li>You don't know whether you message is delivered</li>
+<li>You don't know the order of your sent message</li>
+<li>Light Weighted: No ordering information, no tracing information. It's faster</li>
+</ol>
+<b>TCP Handshake Process</b></div>
+<div>
+<ol>
+<li>Client sends a SYN to server with a segment sequence number</li>
+<li>Server replies client a SYN-ACK with the client sequence number&nbsp;+ 1 and its sequence number</li>
+<li>Client send ACK to server with server sequence number&nbsp;+ 1</li>
+</ol>
+Now both client and server receive an acknowledgement of connection. The communication is established.</div>
+<div>
+<br /></div>
+<div>
+<b>Reliable Delivery&nbsp;</b></div>
+<div>
+For each TCP packet receiver must send acknowledgement to show it is delivered. If the sender doesn't receive the acknowledgement sender will resend the packet until acknowledgement received.</div>
+<div>
+<b><br /></b></div>
+<div>
+<b>Flow Control (TCP sender's/Receiver's Window)</b></div>
+<div>
+A TCP window is the number of data that sender can send before it gets the acknowledgement.</div>
+<div>
+<br /></div>
+<div>
+<b>Congestion Control</b></div>
+<div>
+congestion window</div>
+<div>
+<br /></div>
+<h3>
+4. IPv4 &amp; IPv6</h3>
+<div>
+128 bits and 256 bits ip address</div>
+<div>
+<br /></div>
+<div>
+<h3>
+<b>5. Basics about common internet protocol suite</b></h3>
+</div>
+<div>
+Like IGMP, ICMP, HTTP, FTP, BGP, DHCP etc..</div>
+<div>
+https://www.princeton.edu/~achaney/tmve/wiki100k/docs/Internet_Protocol_Suite.html</div>
+<div>
+<b><br /></b></div>
+<div>
+<br /></div>
+
+
+
+
+  </body>
+</html>

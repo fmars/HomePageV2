@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body>
+<span style="font-family: Arial, Helvetica, sans-serif;">Use the review part in " Crack Code"</span><br />
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></u></i></h3>
+<h3>
+</h3>
+<h2>
+</h2>
+<h3>
+<u style="font-size: x-large;"><i><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">C++ vs Java &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></i></u><ul>
+</ul>
+</h3>
+<span style="font-family: Arial, Helvetica, sans-serif;">1.Java runs in a virtual machine2.C++ natively supports <span style="color: red;">unsigned arithmetic</span></span><br />
+
+
+<blockquote class="tr_bq" style="text-align: left;">
+<span style="font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; Either signed int or unsigned int, it is a sequence of binary bits in the memory. The difference is how software gives it semantic meaning. In C++ a binary sequence can be treat as a signed int or unsigned int. But Java can only treat it as signed int. Thus if you want to use unsigned int and related operation, Java will&nbsp;automatically use unsigned long to guarantee the range of value.&nbsp;</span></blockquote>
+<span style="font-family: Arial, Helvetica, sans-serif;">3 &nbsp; In Java, parameters are always passed by value (or, with objects, their references are&nbsp;passed by value) In C++, parameters can be passed by value, <span style="color: red;">pointer, or by reference</span></span><br />
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">C++ doesn't give a strict requirement on how to implement reference. Compiler usually implements reference by using a pointer const.&nbsp;But whether they are identical internally, they are totally different usage.&nbsp;1. Pointer can point to some else but reference cannot change once it has been binding with something.2. A reference must be binding with something when it is declared. A pointer can point to null but reference can not.3. Reference doesn't have algorithm operations like int *p&nbsp;++</span></blockquote>
+<span style="font-family: Arial, Helvetica, sans-serif;">4 &nbsp; Java has built-in garbage collection5 &nbsp; C++ allows <span style="color: red;">operator overloading</span></span><br />
+<blockquote class="tr_bq">
+<span style="background-color: purple; color: lime; font-family: Arial, Helvetica, sans-serif;">TODO: why doesn't Java support operator overloading?</span></blockquote>
+<span style="font-family: Arial, Helvetica, sans-serif;">6 &nbsp; C++ allows multiple inheritance of classes</span><br />
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></u></i><br />
+<h3>
+<span style="font-family: Arial, Helvetica, sans-serif;"><i style="font-size: x-large;"><u><span style="color: blue;">&nbsp;13.2 &nbsp;Compare Hash table vs an STL map &nbsp;&nbsp;</span></u></i>
+
+</span></h3>
+<span style="font-family: Arial, Helvetica, sans-serif; font-weight: normal;">The first in mind difference is STL map is implemented in Binary Search Tree that each operation runs in O(logn). However unordered_map is implemented in actual hash.</span><br />
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif; font-weight: normal;"></span></blockquote>
+<span style="font-family: Arial, Helvetica, sans-serif;">&nbsp;<span style="font-weight: normal;">The trade off for larger time complexity is </span><span style="color: red; font-weight: normal;">STL map</span><span style="font-weight: normal;"> maintains the order in the mean time. That means it support operations related to the&nbsp;</span></span><br />
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-weight: normal;">1. find min/max&nbsp;</span><span style="font-weight: normal;">2. print the elements in sorted&nbsp;</span><span style="font-weight: normal;">3. find the exact or the most closed&nbsp;</span><span style="font-weight: normal;">(STL::map::lower_bound, find the first equal or bigger;&nbsp;</span><span style="font-weight: normal;">STL::map::upper_bound, find the first&nbsp;</span></span></blockquote>
+<span style="font-family: Arial, Helvetica, sans-serif;">&nbsp;<span style="font-weight: normal;">The implementation of a </span><span style="color: red; font-weight: normal;">hash&nbsp;</span></span><br />
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-weight: normal;">1. a good hash function to ensure uniform&nbsp;</span><span style="font-weight: normal;">2. a collision resolving&nbsp;</span><span style="font-weight: normal;">3. dynamically increase or decrease table size</span></span>&nbsp;</blockquote>
+<blockquote class="tr_bq">
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></blockquote>
+<u><i><b><span style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><span style="color: blue;">13.3</span><span style="color: #cc0000;"> <b>V</b>irtual functions</span></span><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;"> in C++? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></b></i></u><br />
+<ul>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif; font-size: small;"><b><span style="font-weight: normal;">&nbsp;</span></b><span style="font-weight: normal;">Virtual functions is a very important part in C++ to represent Polymorphism. Let's talk about Virtual function first then step further to Polymorphism.</span></span></blockquote>
+<ul>
+<li><b><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;">What's virtual function</span></b></li>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">The class function defined with <i>virtual</i>&nbsp;keyword is a virtual function. The difference between a virtual function and a normal class function is :&nbsp;</span></blockquote>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">if a function is defined as 'virtual' in the base class, the most derived class's implementation of function is called according to the actual type of the object referred to, regardless of the declared type of pointer or reference.</span></blockquote>
+<span style="font-family: Arial, Helvetica, sans-serif;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="http://4.bp.blogspot.com/-MLjB6ysb_l8/VCyJ6JeJm2I/AAAAAAAAAEM/g4EUzVv9irs/s1600/QQ%E5%9B%BE%E7%89%8720141001160840.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://4.bp.blogspot.com/-MLjB6ysb_l8/VCyJ6JeJm2I/AAAAAAAAAEM/g4EUzVv9irs/s1600/QQ%E5%9B%BE%E7%89%8720141001160840.jpg" height="320" width="263" /></span></a></div>
+<blockquote class="tr_bq" style="clear: both; text-align: left;">
+<span style="font-family: Arial, Helvetica, sans-serif;">The result of program would be "Derived" rather then "Base".</span></blockquote>
+<div class="separator" style="clear: both; text-align: left;">
+</div>
+<ul>
+<li><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;"><b>Static binding &amp; Dynamic binding</b></span></li>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">In static binding compiler will know each function's address(offset) at compile time.&nbsp;In dynamic binding, compiler can know the exact function called only during the run time. Thus need a additional structure to store this information called vtable for each class.</span></blockquote>
+<div>
+<ul>
+<li><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;"><b>Insight of Virtual Function&nbsp;implementation</b></span></li>
+<ul>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Each class X will have an virtual table for each base class which X derives from (C++ is multiple inheritance language).</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Each object of class X will have a vptr variable pointing to the first virtual table of class X.</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">If a virtual function is not overridden by the derived class, the vtable of the derived class stores the address of the function in his parent class.</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">When a virtual function is called, the virtual table got by vptr is used to resolve the address function.</span></li>
+</ul>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">The vptr is usually stored at the very first position in a object. vptr is a pointer which points to the first virtual table. Within each virtual table, the pointer to virtual functions are stored. Consider the following program.</span></blockquote>
+</div>
+<div>
+<ul>
+<ul>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Because there are two vptr in the derived class, thus the size of derived class is 8 bytes (each pointer has 4 bytes in 32 bit system).</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Explicit convert the vptr to a int pointer. We will find out the address of first virtual table.</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Add 1 to the address of first virtual table, we will get the address of second virtual table.</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Refer to the address of second virtual table, and plus 1 then we will get the address of second virtual function in the second virtual table</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Use a function pointer then we can call this virtual function manually. Looks cool aha.</span></li>
+</ul>
+</ul>
+<span style="font-family: Arial, Helvetica, sans-serif;"><br /></span>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="http://3.bp.blogspot.com/-ebh8pT6OcSM/VCyRm1k9pvI/AAAAAAAAAEc/zkA5lWycWhE/s1600/QQ%E5%9B%BE%E7%89%8720141001164140.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><span style="font-family: Arial, Helvetica, sans-serif;"><img border="0" src="http://3.bp.blogspot.com/-ebh8pT6OcSM/VCyRm1k9pvI/AAAAAAAAAEc/zkA5lWycWhE/s1600/QQ%E5%9B%BE%E7%89%8720141001164140.jpg" height="57" width="400" /></span></a></div>
+<div class="separator" style="clear: both; text-align: left;">
+<br /></div>
+<ul>
+<li><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;"><b>Trade-off of the virtual function</b></span></li>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">It takes more memory space because each class also needs to store a virtual table and each instance of the class needs to store a pointer to the virtual table. Also the function address is not know during the compile time rather it is known during the run-time which calculation is needed because it will first find the pointer to virtual table and then use the offset to find out the address of the virtual function.</span></blockquote>
+<ul>
+<li><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;"><b>Pure Virtual Function &amp; Abstract Class</b></span></li>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">A pure virtual function is a virtual function whose&nbsp;deceleration is ended as '=0'. A pure virtual function makes its class as a abstract class which can not be instantiated until all the pure virtual function has been implemented.</span></blockquote>
+</div>
+<div>
+<ul>
+<li><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;"><b>Object Oriented Language</b></span></li>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">&nbsp;Modern OO Language provides three capacities</span></blockquote>
+<ul><ul>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Encapsulation</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Inheritance</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Polymorphism&nbsp;</span></li>
+</ul>
+<li><span style="background-color: white;"><b><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;">Polymorphism in Programming Language</span></b></span></li>
+</ul>
+<blockquote class="tr_bq">
+<span style="font-family: Arial, Helvetica, sans-serif;">In programming language 'polymorphism' means some code or operations behave differently in different contexts. Things like Template, overloading, overriding and virtual function are all&nbsp;representation of polymorphism.</span></blockquote>
+<ul>
+<li><b><span style="color: #3d85c6;">Overloading &amp; Overriding</span></b></li>
+<ul>
+<li>&nbsp;Overloading is when you define two function with same name in same class but distinct signature.</li>
+<li>Overriding is when you define the function already defined in the parent class with the same signature</li>
+</ul>
+<li><span style="background-color: purple; color: lime; font-family: Arial, Helvetica, sans-serif;">TODO: What programming experience do you have related to Polymorphism</span></li>
+</ul>
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></h3>
+<u><i><b><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">13.4&nbsp;Deep copy &amp; Shallow copy&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></b></i></u><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">Shallow copy only copy the pointer to the data.</span><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">Deep copy copies the exact data.</span><br />
+<ul>
+<li><span style="background-color: purple; color: lime; font-family: Arial, Helvetica, sans-serif;">TODO: The bug about memcpy in Database Project related to overlay</span></li>
+</ul>
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></h3>
+<u><i><b><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">13.5&nbsp;Keyword "</span><span style="color: red; font-family: Arial, Helvetica, sans-serif; font-size: large;">volatile</span><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></b></i></u><br />
+<br />
+<ul>
+<li><span style="font-family: Arial, Helvetica, sans-serif;"><b><span style="color: #3d85c6;">For compiler, keyword 'volatile' does two things.</span></b></span></li>
+</ul>
+<ol>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Don't cache the value in a&nbsp;temp register. Instead always read the value from memory&nbsp;</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">Avoid compiler optimizing the code seemed useless within current scope however may be modified from a outer operation</span></li>
+</ol>
+<ul><span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;">
+<li><b>In practice keyword 'volatile' does two things.</b></li>
+</span></ul>
+<span style="color: #3d85c6; font-family: Arial, Helvetica, sans-serif;">
+</span>
+<br />
+<ol>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">For hardware access like interrupt routine</span></li>
+<li><span style="font-family: Arial, Helvetica, sans-serif;">For inter- thread communication</span></li>
+</ol>
+<ul style="color: #3d85c6;"><span style="font-family: Arial, Helvetica, sans-serif;">
+<li><b>C++11</b></li>
+</span></ul>
+<span style="font-family: Arial, Helvetica, sans-serif;">
+</span>
+<u><i><b><span style="font-family: Arial, Helvetica, sans-serif; font-size: large;"></span></b></i></u><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">According to the C++11 ISO Standard, the volatile keyword is only meant for use for hardware access; do not use it for inter-thread communication. For inter-thread communication, the standard library provides std::atomic&lt;T&gt; templates.</span><br />
+<span style="font-family: Arial, Helvetica, sans-serif;"><br /></span>
+<br />
+<div>
+<span style="font-family: Arial, Helvetica, sans-serif;">For multi-thread application programming, volatile doesn't&nbsp;&nbsp;It does not provide any synchronization, it does not create memory fences, nor does it ensure the order of execution of operations. It does not make operations atomic. It does not make your code magically thread safe</span></div>
+<div>
+<ul>
+<li><span style="background-color: purple; color: lime; font-family: Arial, Helvetica, sans-serif;">TODO: Review CS295 about consistency of multithread programming and hardware arcitecture</span></li>
+<li><span style="background-color: purple; color: lime; font-family: Arial, Helvetica, sans-serif;">TODO: Find out about memory fence, atomic operation in this post</span></li>
+<li><span style="background-color: purple;"><span style="color: lime; font-family: Arial, Helvetica, sans-serif;">http://stackoverflow.com/questions/4557979/when-to-use-volatile-with-multi-threading</span></span></li>
+</ul>
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></h3>
+<u><i><b><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">13.6 Name Hiding &nbsp; &nbsp;</span><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></b></i></u><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">In C++, when you have a class with an overloaded method, and you then extend and override that method, you must override all of the overloaded&nbsp;</span><br />
+<span style="font-family: Arial, Helvetica, sans-serif;"></span><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">methods</span><br />
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></h3>
+<u><i><b><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">13.7 Why destructor &nbsp;virtual &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></b></i></u><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">The constructor and destructor of a derived class will call all the based classes's corresponding constructor and destructor function.&nbsp;</span><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">If a based class pointer points to a derived class object, the derived class's destructor won't be called if the destructor is not a virtual function.</span><br />
+
+
+<script src="https://gist.github.com/fmars/3a5086e3f7cd2d20c269.js"></script>
+
+<br />
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></h3>
+<u><i><b><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">13.7 Smart Pointer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></b></i></u><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">"Note that after Delete or Free operation, the value of a pointer may not change."</span><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">Use a class that contains a pointer to point the wanted block of memory which could avoid memory leak because when a smart point is out of scope the destructor will be called&nbsp;automatically to free the space. Within the class it stores a pointer to point to the block of memory and a integer which stores the reference number that points to this memory.</span><br />
+
+
+<h3>
+<i style="font-size: x-large;"><u><span style="color: blue; font-family: Arial, Helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></u></i></h3>
+<u><i><b><span style="color: blue; font-family: Arial, Helvetica, sans-serif; font-size: large;">13.8 Iterator &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></b></i></u><br />
+<span style="font-family: Arial, Helvetica, sans-serif;">&nbsp;C++ uses iterator to give a general way for programmer to access the container. It is a general interface which hides the detail of how to implement. It also provide a way for some common algorithm to be implemented beyond different&nbsp;types&nbsp;of&nbsp;&nbsp;containers like sort, reverse function.</span><br />
+<ul>
+</ul>
+</div>
+<ul><ul>
+</ul>
+</ul>
+</div>
+
+
+  </body>
+</html>

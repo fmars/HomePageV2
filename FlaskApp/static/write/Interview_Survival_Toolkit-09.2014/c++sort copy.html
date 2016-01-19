@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><h2>
+<span style="font-size: large;"><i><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">A trifle in C++ sort function.</span></i></span></h2>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">If we want use sort function to sort a vector with self-defined data type, one method is passing a compare function as a parameter to sort.</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">The very clear details about how to define the comparison function&nbsp; can be found <a href="http://fusharblog.com/3-ways-to-define-comparison-functions-in-cpp/">here</a>.</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">But check the following code to figure out if there is any problem?</span><br />
+<pre style="background: #0c1021; color: #f8f8f8;">#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+#include&lt;cstdlib&gt;
+<span style="color: #fbde2d;">using</span> <span style="color: #fbde2d;">namespace</span> <span style="color: #ff6400;">std</span>;
+<span style="color: #fbde2d;">struct</span> <span style="color: #ff6400;">node</span>{
+    int a,b;
+    <span style="color: #ff6400;">node</span>(int aa,int bb):a(aa),b(bb){}
+};
+<span style="color: #fbde2d;">bool</span> <span style="color: #ff6400;">cmp</span>(node x,node y){
+    return x.a&lt;=y.a;
+}
+<span style="color: #fbde2d;">int</span> <span style="color: #ff6400;">main</span>(){
+    vector&lt;node&gt;v;
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,4));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,4));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,2));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,4));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,4));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,4));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(1,5));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(2,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(2,3));
+    v.<span style="color: #8da6ce;">push_back</span>(<span style="color: #8da6ce;">node</span>(3,4));
+    sort(v.<span style="color: #8da6ce;">begin</span>(),v.<span style="color: #8da6ce;">end</span>(),cmp);
+    for(int i=0;i&lt;v.<span style="color: #8da6ce;">size</span>();i++)
+        cout&lt;&lt;v[i].a&lt;&lt;" "&lt;&lt;v[i].b&lt;&lt;endl;
+    return 0;
+}
+</pre>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">It seems good right? However it will lead to segmentation fault.</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">It is because the comparison function requires the strict order of two items. Thus equal or less equal is not allowed to appear. The reason why is will crash can be talked later.</span><br />
+<br />
+<h2>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: large;">&nbsp;Comparison between Qsort and Priority_queue</span></span><span style="font-family: Courier New, Courier, monospace;"> </span></h2>
+<span style="font-family: Courier New, Courier, monospace;">For sort, cmp is a function pointer or comparison object.</span><br />
+<span style="font-family: Courier New, Courier, monospace;">However for priority_queue, the comparison is a class template.</span><br />
+<span style="font-family: Courier New, Courier, monospace;">Consider the following code.</span><br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="http://4.bp.blogspot.com/-lQeEw3h44A0/VBKenaBJcuI/AAAAAAAAADw/RlH-dI07AN4/s1600/0HH6YTJ%7D%7DH(BRXQ(_%7DAME16.jpg" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-lQeEw3h44A0/VBKenaBJcuI/AAAAAAAAADw/RlH-dI07AN4/s1600/0HH6YTJ%7D%7DH(BRXQ(_%7DAME16.jpg" height="328" width="640" /></a></div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+
+
+
+
+  </body>
+</html>

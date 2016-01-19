@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body>Use merge sort we can easily calculate the total number of reverse ordered pairs.<br />
+<br />
+Here talks about how to find out the number of reverse ordered pairs for each element which means<br />
+<blockquote class="tr_bq">
+<b>Given an array A[n], for each element A[x], count the number of reverse ordered pairs that the number of A[y] that y&gt;x &nbsp;and A[x]&gt;A[y]. &nbsp;</b>(Assume no duplicate in the array.)</blockquote>
+For example given array A[ ] = {41 67 34 0 69 24 78 58 62 64 5 45 81 27 61}<br />
+Then the reverse ordered pair number for each element is {5 10 4 0 8 1 7 3 4 4 0 1 2 0 0}<br />
+<br />
+<br />
+<ol>
+<li>This problem <b>cannot be solved in O(n) time</b>. Because if it could, sort problem could be also solved in O(n) time.</li>
+<li>There are two intuitive ideas.&nbsp;</li>
+<ol>
+<li><b><span style="color: blue;">Use merge sort.</span></b> During merge sort procedure when we merge two subarr arr1 and arr2 into arr, if any element resided in arr2 is put into arr before any element which still remains in arr1. Then we should add 1 for each remaining element in arr1's number of reverse ordered pair. But this will cost O(n) time. So instead when each element in arr1 is the current element will be put into arr, we count how many elements in arr2 have already put into arr ahead of this element. And this could be done in O(1).</li>
+<li><b><span style="color: blue;">Use a binary search tree</span></b>. We scan the array from back to front and each time when an element X is scanned. &nbsp;First check out how many elements in the BST is bigger then X. This costs O(logn) by adding a meta information for each node which denotes the total number of node in this subtree rooted by this node. Then insert X into BST which costs O(logn). The only problem for this method is implementing a BST is simple but a Balanced BST could take some time.</li>
+</ol>
+</ol>
+Here are the implementation of two methods and use them to calculate the same data and we can see the results are the same.<br />
+<br />
+<script src="https://gist.github.com/fmars/b056071c27c7dc42ca95.js"></script>
+
+
+  </body>
+</html>

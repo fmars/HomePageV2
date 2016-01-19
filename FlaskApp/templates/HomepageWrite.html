@@ -1,0 +1,37 @@
+{% extends "HomepageBase.html" %}
+
+{% block home_page_body %}
+	<!-- Required Javascript -->
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//hide the all of the element with class msg_body
+			$(".msg_body").hide();
+			//toggle the componenet with class msg_body
+			$(".msg_head").click(function(){
+				$(this).next(".msg_body").slideToggle(250);
+			});
+		});
+	</script>
+	
+	<h2 id='title-fmars'>Write</h2>
+	<div id="write-content">
+		<div class="msg_list">
+			{% for dir in file_tree.children %}
+			<p class="msg_head">&oplus; {{ dir.showName }} <span style="font-size:17px; float:right">{{ dir.showDate }}</span></p>
+			<div class="msg_body">
+				{% for file in dir.children %}
+				<p>
+					<a target="_blank" href="static/write/{{ dir.baseName }}/{{ file.baseName }}" style="padding-left:12px">
+					{{ file.showName }}
+					<span style="font-size:12px; float:right">
+					{{ file.showDate }}</span></a>
+				</p>
+				{% endfor %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+

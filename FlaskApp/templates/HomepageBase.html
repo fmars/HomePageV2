@@ -14,40 +14,44 @@
 
 	<META http-equiv="Content-Type" content="text/html; charset=utf-8">    
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="static/css/main.css">    
+	<link rel="stylesheet" href="static/css/Homepage.css">    
   </head>
 
   <body>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<div class="row">
+						<div class="col-md-2"></div>
+							<div class="col-md-6">
 					<ul class="nav navbar-nav">
-						{% block home_page_header %}
-							<li class="tab"><a  href="index.html" >Me</a></li>
-							<li class="tab"><a class="tab-now" href="write.html" style="color:black">Write</a></li>
-							<li class="tab"><a href="read.html">Read</a></li>
+
+						{% block home_page_nav %}
+							<li class="tab"><a  href="me" >Me</a></li>
+							<li class="tab"><a href="write">Write</a></li>
+							<li class="tab"><a href="read">Read</a></li>
 							<li class="tab"><a href="http://github.com/fmars/HomePage/tree/master/atfb">x</a></li>
 						{% endblock %}
+
 					</ul>
-					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
+							</div>
+					</div>	
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-
+		
+		
+		{% block home_page_header %}
     <h1 id="name" align='middle'>Fmars</h1>
     <p id="belief" align='middle'><em>Inner happiness comes from self-sacrifice</em></p>
-
+		{% endblock %}
+	
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-6">
-				{% block home_page_body %}
-				{% endblock %}
+	    {% block home_page_body %}
+			{% endblock %}
       </div>
 
       <div class="col-md-3">
@@ -64,7 +68,7 @@
       </div>
     </div>
 	
-		{% block home_page_footer %}
-		{% endblock %}
+	{% block home_page_footer %}
+	{% endblock %}
   </body>
 </html>

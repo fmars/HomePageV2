@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><h3>
+1. External Sort</h3>
+<div>
+The simplest one 'two way merge sort".</div>
+<div>
+First pass. Use in memory sort to sort records within each page.</div>
+<div>
+Following passes. (Assume using 3 pages of memory 2 as input buffer and 1 as output buffer).&nbsp;</div>
+<div>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1. Merge every two pages into one&nbsp;</div>
+<div>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2. Merge every four pages into one</div>
+<div>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3. Merge every eight pages into one</div>
+<div>
+&nbsp; &nbsp;Each time use input buffer to read from one source. Read next page when the records run out in input buffer. When output is full write it into disk and clear it.</div>
+<div>
+<br />
+2. qiqiguaiguaide</div>
+<div>
+<ol style="background-color: white; color: #666666; font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px; line-height: 18.4799995422363px;">
+<li style="margin: 0px 0px 0.25em; padding: 0px;">sizeof ( float) == 4</li>
+<li style="margin: 0px 0px 0.25em; padding: 0px;">struct{ char[3] } . The size of this structure is 4 because of alignment</li>
+<li style="margin: 0px 0px 0.25em; padding: 0px;">struct { char [3], int , float, char [0] }. The usage of char [0]</li>
+<li style="margin: 0px 0px 0.25em; padding: 0px;">Extern C</li>
+</ol>
+</div>
+
+
+
+  </body>
+</html>

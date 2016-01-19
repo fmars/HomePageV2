@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><span style="font-family: Times, Times New Roman, serif; font-size: large;"><b><i>ISA</i></b></span><br />
+<span style="font-family: Times, Times New Roman, serif;">Instruction Set Architecture. A high level abstraction of the hardware that implemented by a set of microprocessor design techniques.</span><br />
+<span style="font-family: Times, Times New Roman, serif;">Types like RICS: x86. CICS: MIPS, ARM</span><br />
+<span style="font-family: Times, Times New Roman, serif;"><br /></span>
+<span style="font-size: large;"><b><i>RICS</i></b></span><br />
+Reduced Instruction Set Computing.<br />
+Reduce the amount work of a single instruction that at most a single data memory cycle.<br />
+<br />
+<span style="font-size: large;"><b><i>MISP</i></b></span><br />
+Microprocessor without Interlocked Pipeline Stages.<br />
+Reduce the amount of job of each instruction. Make it easier to do the pipeline to speed up.<br />
+( Use more registers. Only one memory access method, reg&nbsp;+ offset. Return address register, use coprocessor CP0 to deal with floating points and interrupt)<br />
+<span style="color: red;">TODO What does WITHOUT INTERLOCK mean?</span><br />
+<span style="color: red;"><br /></span>
+<span style="color: blue;">EXcpu = Number of&nbsp;Instructions * CPI * cycle time</span><br />
+<span style="color: red;"><br /></span>
+<span style="font-size: large;"><b><i>PIPELINE</i></b></span><br />
+Five stages: Instruction Fetch, Instruction Decode, Execution, Memory Access, Write Back.<br />
+Hazard: Structural Hazard, Data Hazard (Stall, Data Forward), Branch Hazard (Static Prediction, Dynamic Prediction)<br />
+<br />
+<span style="font-size: large;"><b><i>CACHE</i></b></span><br />
+WHY: Balance the performance difference between CPU and memory. L1 L2 L3 cache.<br />
+The reason why cache is useful is taking advantage of temporary locality and spacial locality.<br />
+ORGANISATION: Full associate, direct mapping, two way set associate.<br />
+<br />
+<br />
+<span style="font-size: large;"><b><i>VIRTUAL MEMORY</i></b></span><br />
+<span style="color: magenta;">WHAT</span>: Virtual memory is a memory management technique that maps a virtual address used by program into a physical address in memory.<br />
+<br />
+<span style="color: magenta;">WHY</span>: (1. Abstraction Layer) Each program will have a independent 4G memory space provided by the system which is a middle layer between high level software program and low level hardware memory resource. Then software program no longer needs to care about which segment of memory can be used or whether a memory is 'real' memory or disk. (2. Memory Protection) Virtual memory can help programs from interfering with others programs. Because each program can access its own memory space which maps to a part of physical memory controlled by operating system. (3. Shared Memory) Also helps programs cooperate and share memory.<br />
+<br />
+<span style="color: magenta;">HOW</span>: Use the page table to translate virtual address to physical address and use TLB (Translation Lookaside Buffer) to accelerate the speed.<br />
+<br />
+<span style="color: magenta;">PAGE FAULT</span>: When the hardware tries to access a page that is mapped in the virtual space however not loaded into the physical memory, then a page fault will be raised by hardware. Usually the operating system will handle page fault interrupt by allocate a new page in physical memory and map it to the demanded virtual memory.<br />
+<br />
+<span style="color: magenta;">THRASHING</span>:<br />
+When a large process or some small processes frequently access the memory and physical memory doesn't have the enough space for these processes, and the memory swapping strategy makes inefficient &nbsp;swapping decision, then pages are frequently swapped between memory and disk which costs a lot time but do less help to the program.<br />
+<span style="color: red;">TODO: Cache swap replacement algorithm</span><br />
+<br />
+<span style="font-size: large;"><b><i>OUT OF ORDER PROCESSOR</i></b></span><br />
+<span style="color: red;">TODO: Tomasulu algorithm, register renaming, reorder buffer, reservation station, instruction window</span><br />
+<span style="font-size: large;"><b><i>MEMORY MODEL FOR SEQUENTIAL CONSISTENCY</i></b></span><br />
+<span style="color: red;">TODO: Review the cs 295 content</span>
+
+
+  </body>
+</html>

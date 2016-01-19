@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body>
+
+    <h2>
+<span style="font-size: x-large;"><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">Int and Unsigned Int</span></span></h2>
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: small;">No matter what type of data it is, int or unsigned int, it is always stored as a <span style="color: magenta;">32 bits</span> binary number in the computer. Thus a int could always convert with a unsisged int. The only problem is whether the convert result is as the same as we expected</span></span></li>
+<li><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">This problem might be important because the <span style="color: magenta;">size_t </span>is the unsi</span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: small;">gned int type which is the return type of <span style="color: magenta;">size()</span> function. We use size() function very frequently and if we use it in a loop sentence, always a warning appear if you switch on the </span>compiler option. Thus there is always a implicit conversion from int to unsigned int.</span></li>
+<li>It <span style="font-family: &quot;Courier New&quot;, Courier, monospace;">could be right if all we talk about the non-negative. However if it is a negative number, problem could appear.</span></li>
+</ul>
+<blockquote class="tr_bq">
+<blockquote class="tr_bq">
+i=i+1;</blockquote>
+</blockquote>
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">Let's think about this program&nbsp;</span></li>
+</ul>
+<pre style="background: #0c1021; color: #f8f8f8;">#include&lt;iostream&gt;
+#include&lt;string&gt;
+<span style="color: #fbde2d;">using</span> <span style="color: #fbde2d;">namespace</span> <span style="color: #ff6400;">std</span>;
+<span style="color: #fbde2d;">int</span> <span style="color: #ff6400;">main</span>(){
+    int i=-1;
+    unsigned int u=100;
+    if(i&lt;u)
+        cout&lt;&lt;"-1 &lt; 100";
+    else 
+        cout&lt;&lt;"-1 &gt; 100";
+    return 0;
+}
+
+</pre>
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;">The output is </span><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">&nbsp;&nbsp;&nbsp; "-1 &gt; 100".</span><br />
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;">Is that weird? Yes it is. Because it is the implicit conversion from int to unsigned it. And -1 will be converted to a big num.</span><br />
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">Actually since both int and unsigned int are the store as a binary number in computer, when <span style="color: magenta;">conversion </span>executed, it is not the actual conversion. It is just another output method. The bit info stored in memory doesn't change. What changed is how you read and parse this data, treat it as whether a int 
+or a unsigned int. Have a look at following code</span></li>
+<pre style="background: #0c1021; color: #f8f8f8;">#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+<span style="color: #fbde2d;">using</span> <span style="color: #fbde2d;">namespace</span> <span style="color: #ff6400;">std</span>;
+<span style="color: #fbde2d;">int</span> <span style="color: #ff6400;">main</span>(){
+    cout&lt;&lt;"2^32="&lt;&lt;(int)<span style="color: #8da6ce;">pow</span>(2,32)&lt;&lt;endl;
+    cout&lt;&lt;"Data type conversion"&lt;&lt;endl;
+    cout&lt;&lt;"This is an illustation of how int convert with unsigned int"&lt;&lt;endl;
+//unsigned int is directly represented by binary representation
+//int is stored in two's complement. Thus if a int has n bits, then the bigget one is 2^(n-1)-1, however the smallest one is 2*(n-1) because the positve part uses one to represent the +0 thus the negative part donnot need to represent the -0.
+
+    unsigned int u;
+    int i;
+
+    cout&lt;&lt;"11111...11111"&lt;&lt;endl;
+    u=(unsigned int)<span style="color: #8da6ce;">pow</span>(2,32)-1;
+    i=u;
+    cout&lt;&lt;"u="&lt;&lt;u&lt;&lt;endl&lt;&lt;"i="&lt;&lt;i&lt;&lt;endl;
+
+    cout&lt;&lt;"10000...00000"&lt;&lt;endl;
+    u=(unsigned int)<span style="color: #8da6ce;">pow</span>(2,31);
+    i=u;
+    cout&lt;&lt;"u="&lt;&lt;u&lt;&lt;endl&lt;&lt;"i="&lt;&lt;i&lt;&lt;endl;
+
+    cout&lt;&lt;"00000...00000"&lt;&lt;endl;
+    u=(unsigned int)0;
+    i=u;
+    cout&lt;&lt;"u="&lt;&lt;u&lt;&lt;endl&lt;&lt;"i="&lt;&lt;i&lt;&lt;endl;
+    return 0;
+}
+
+</pre>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">&nbsp;For more details about the two's complement can be found <a href="http://en.wikipedia.org/wiki/Two%27s_complement">here at wiki</a></span></li>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;">&nbsp;Now we can predict what if we convert a negative int to a unsigned int using the knowledge above</span></li>
+<pre style="background: #0c1021; color: #f8f8f8;">#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+<span style="color: #fbde2d;">using</span> <span style="color: #fbde2d;">namespace</span> <span style="color: #ff6400;">std</span>;
+<span style="color: #fbde2d;">int</span> <span style="color: #ff6400;">main</span>(){
+    cout&lt;&lt;"2^32="&lt;&lt;(int)<span style="color: #8da6ce;">pow</span>(2,32)&lt;&lt;endl;
+    cout&lt;&lt;"Data type conversion"&lt;&lt;endl;
+    cout&lt;&lt;"This is an illustation of how int convert with unsigned int"&lt;&lt;endl;
+//unsigned int is directly represented by binary representation
+//int is stored in two's complement. Thus if a int has n bits, then the bigget one is 2^(n-1)-1, however the smallest one is 2*(n-1) because the positve part uses one to represent the +0 thus the negative part donnot need to represent the -0.
+
+    unsigned int u;
+    int i;
+
+    cout&lt;&lt;"11111...11111"&lt;&lt;endl;
+    u=(unsigned int)<span style="color: #8da6ce;">pow</span>(2,32)-1;
+    i=u;
+    cout&lt;&lt;"u="&lt;&lt;u&lt;&lt;endl&lt;&lt;"i="&lt;&lt;i&lt;&lt;endl;
+
+    cout&lt;&lt;"10000...00000"&lt;&lt;endl;
+    u=(unsigned int)<span style="color: #8da6ce;">pow</span>(2,31);
+    i=u;
+    cout&lt;&lt;"u="&lt;&lt;u&lt;&lt;endl&lt;&lt;"i="&lt;&lt;i&lt;&lt;endl;
+
+    cout&lt;&lt;"00000...00000"&lt;&lt;endl;
+    u=(unsigned int)0;
+    i=u;
+    cout&lt;&lt;"u="&lt;&lt;u&lt;&lt;endl&lt;&lt;"i="&lt;&lt;i&lt;&lt;endl;
+    return 0;
+}
+
+</pre>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><b><span style="color: red;">So far we're talking about the uselessness. Now the point I want say is, when ever use size() function or use a unsigned int, do remember to check if it has any operation with a int even worse it has a operation with a negative int.</span></b></span></li>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><span style="color: red;"><span style="color: black;">Just think a<span style="color: black;">bout this <span style="color: black;">code. What will be outputed</span></span></span></span><b><span style="color: red;"><span style="color: black;"><span style="color: black;"><span style="color: black;"><br /></span></span></span></span></b></span></li>
+<pre style="background: #0c1021; color: #f8f8f8;">vector&lt;<span style="color: #fbde2d;">int</span>&gt; v;
+<span style="color: #fbde2d;">for</span>(<span style="color: #fbde2d;">int</span> i=-<span style="color: #d8fa3c;">10</span>;i&lt;v.size();i++)
+    cout&lt;&lt;i;
+</pre>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><span style="color: red;"><span style="color: black;"><span style="color: black;"><span style="color: black;">Now we can step further talk about the overflow. Consider the following code</span></span></span></span></span></li>
+<pre style="background: #0c1021; color: #f8f8f8;">#include&lt;iostream&gt;
+#include&lt;climits&gt;
+<span style="color: #fbde2d;">using</span> <span style="color: #fbde2d;">namespace</span> <span style="color: #ff6400;">std</span>;
+<span style="color: #fbde2d;">int</span> <span style="color: #ff6400;">main</span>(){
+    int i=INT_MAX;
+    cout&lt;&lt;i&lt;&lt;endl&lt;&lt;i+1&lt;&lt;endl;
+    i=INT_MIN;
+    cout&lt;&lt;i&lt;&lt;endl&lt;&lt;i-1&lt;&lt;endl;
+    unsigned int u=UINT_MAX;
+    cout&lt;&lt;u&lt;&lt;endl&lt;&lt;u+1&lt;&lt;endl;
+    return 0;
+}
+</pre>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><span style="color: red;"><span style="color: black;"><span style="color: black;"><span style="color: black;">Yes,</span></span></span></span></span></li>
+<ul>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><span style="color: magenta;">INT_MAX + 1 = INT_MIN</span><span style="color: black;">.&nbsp;</span></span></li>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><span style="color: red;"><span style="color: black;"><span style="color: black;"><span style="color: black;">INT_MIN - 1 = INT_MAX.</span></span></span></span></span></li>
+<li><span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><span style="color: red;"><span style="color: black;"><span style="color: black;"><span style="color: black;">UINT_MAX+ 1 = 0.&nbsp;</span></span></span> </span></span></li>
+</ul>
+</ul>
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;">
+</span>
+
+
+
+
+
+<br />
+<ul>
+</ul>
+
+
+  </body>
+</html>

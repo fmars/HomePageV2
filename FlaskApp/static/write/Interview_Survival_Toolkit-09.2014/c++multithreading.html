@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><h3>
+The difference between Process and Thread?</h3>
+<br />
+<ul>
+<li>A process is an instance of computer program and it has the whole running resource like memory space and it is private. Thus in order to communicate with the shared memory or Inter Process Communication(IPC) is needed.</li>
+<li>One process may have multiple threads which can be treat as a light weighted process. All the threads share the memory space of the process.&nbsp;</li>
+<li>And each process has it own run time status like registers and run time stack. Thus switch threads is more efficient than switch processes.&nbsp;</li>
+<li>The communication between threads, the synchronization is the importation part of multithreading.&nbsp;</li>
+</ul>
+<h3>
+How to synchronize multiple threads?</h3>
+<h4>
+1. Race Condition</h4>
+<div>
+Race Condition is that the output of program is dependent on the sequence of uncontrolled events like multiple threads. When the events does not happen as programmer intend the bug generated.</div>
+<h4>
+2. How to avoid race condition</h4>
+<div>
+Synchronize threads to avoid race condition.&nbsp;</div>
+<div>
+<ol>
+<li>Mutex: mutual exclusive lock. Enforce exclusive access</li>
+<li>Join: Make a thread wait until another thread terminate&nbsp;</li>
+<li>Condition Variable: Make a thread wait until some condition is true</li>
+<li>Barrier: Make all the threads wait until all the threads called the barrier function</li>
+<li>Semaphore: used to solve the consumer and producer problem (a variable used to control access to a shared resource by multiple processes)</li>
+</ol>
+<h4>
+3. Problem from CrackCode 4th Edition</h4>
+</div>
+<div>
+</div>
+<br />
+<div class="page" title="Page 92">
+<div class="section">
+<div class="layoutArea">
+<div class="column">
+<blockquote class="tr_bq">
+<span style="font-family: MyriadPro; font-size: 9pt;">Suppose we have the following code:</span><span style="font-family: Consolas; font-size: 9pt;">class Foo {</span><span style="font-family: Consolas; font-size: 9pt;">public:</span><span style="font-family: Consolas; font-size: 9pt;">f.A(.....); f.B(.....); f.C(.....);
+f.A(.....); f.B(.....); f.C(.....);</span><span style="font-family: Consolas; font-size: 9pt;">A(.....); /* If A is called, a new thread will be created and
+* the corresponding function will be executed. */</span><span style="font-family: Consolas; font-size: 9pt;">B(.....); /* same as above */</span><span style="font-family: Consolas; font-size: 9pt;">C(.....); /* same as above */
+}</span><span style="font-family: Consolas; font-size: 9pt;">Foo f;
+f.A(.....);
+f.B(.....);
+f.C(.....);</span><span style="font-family: MyriadPro; font-size: 9pt;">i) Can you design a mechanism to make sure that B is executed after A, and C is ex-
+ecuted after B?</span><span style="font-family: MyriadPro; font-size: 9pt;">iii) Suppose we have the following code to use class Foo. We do not know how the
+threads will be scheduled in the OS.</span><span style="font-family: Consolas; font-size: 9pt;">Foo f;</span><span style="font-family: MyriadPro; font-size: 9pt;">Can you design a mechanism to make sure that all the methods will be executed in
+sequence?&nbsp;</span></blockquote>
+Answer Cool<br />
+<br />
+<br />
+<div class="page" title="Page 268">
+<div class="section">
+<div class="layoutArea">
+<div class="column">
+<span style="font-family: 'Consolas'; font-size: 9.000000pt;"><span style="color: #4c4c4c;">&nbsp; &nbsp;</span>Semaphore s_a(0);&nbsp;</span></div>
+</div>
+</div>
+</div>
+<span style="font-family: Consolas; font-size: 9pt;"><span style="color: #4c4c4c;">&nbsp; &nbsp;</span>Semaphore s_b(0);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;"><span style="color: #4c4c4c;">&nbsp; &nbsp;</span>Semaphore s_c(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp;A{</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; s_c.acquire(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; run_some_thing;</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; s_a.release(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; }</span><br />
+<span style="font-family: Consolas; font-size: 9pt;"><br /></span>
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp;B{</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; s_a.acquire(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; run_some_thing;</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; s_b.release(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; }</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp;&nbsp;</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp;C{</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; s_b.acquire(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; run_some_thing;</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; &nbsp; s_c.release(1);</span><br />
+<span style="font-family: Consolas; font-size: 9pt;">&nbsp; &nbsp; }</span><br />
+<span style="font-family: Consolas; font-size: 9pt;"><br /></span>
+
+  
+ 
+ 
+  <br />
+<div class="page" title="Page 270">
+<div class="section">
+<div class="layoutArea">
+<div class="column">
+<blockquote class="tr_bq">
+<span style="font-family: 'MyriadPro'; font-size: 9.000000pt;">You are given a class with synchronized method A, and a normal method C. If you
+have two threads in one instance of a program, can they call A at the same time? Can
+they call A and C at the same time?&nbsp;</span></blockquote>
+Answer<br />
+&nbsp;1. If a method is synchronized method then two instance of a program cannot be called at same time because they are mutual exclusive<br />
+2. Yes.<br />
+<br />
+<h3>
+4.Deadlock</h3>
+<div>
+Because of mutex deadlock could be happened.</div>
+<div>
+A deadlock is a situation that two or more actions are each waiting for other to finish, and thus neither ever does.</div>
+<div>
+<ul>
+<li>Mutual exclusive&nbsp;</li>
+<li>No preemption</li>
+<li>Circular wait</li>
+</ul>
+<h3>
+5. Thread Safe</h3>
+<div>
+Thread safe means the program can be used by multiple threads at the same time and without causing any problem.</div>
+<ul>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page" title="Page 269">
+<div class="section">
+<div class="layoutArea">
+<div class="column">
+</div>
+</div>
+</div>
+</div>
+<ul style="list-style-type: none;">
+      </ul>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+  </body>
+</html>

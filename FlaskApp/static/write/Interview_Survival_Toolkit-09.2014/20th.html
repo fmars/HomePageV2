@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Fmars </title>
+    
+  </head>
+
+  <body><b>Given a file containing a huge volume of URLs, find the 20th popularist URL.</b><br />
+<b><br /></b>
+First use hash ( std::map ) to count the occurrence time of each URL. Then the problem is transformed into the problem that give an unorderred array, find out the 20th largest element in the array.<br />
+<br />
+Two intuitive ideas are formed.<br />
+Let's assume in total N distinct URLs and find out the Kth URL<br />
+<br />
+<br />
+<ul>
+<li><span style="font-size: large;"><b>QuickSelect&nbsp;</b></span></li>
+</ul>
+<br />
+<br />
+<ul><ul>
+<li>Direct use quick select algorithm to find out the 20th URL.</li>
+<li>Time complexity: <b>O(N)</b> for average time complexity</li>
+<li>Could be <b>O(N*N)</b> in the worst case.</li>
+</ul>
+</ul>
+<br />
+<h3>
+</h3>
+<h3>
+</h3>
+<h3>
+</h3>
+<h3>
+<ul>
+<li><span style="font-size: large;">Heap</span></li>
+<ul>
+<li><span style="font-size: small; font-weight: normal;">&nbsp;First build up the maximum heap and then pop up the top element K-1 times</span></li>
+<li><span style="font-size: small; font-weight: normal;">Then the next top element will be the Kth URL</span></li>
+<li><span style="font-size: small;"><span style="font-weight: normal;">Build up heap runs in O(N) time if use divide and conquer strategy</span></span></li>
+<li><span style="font-size: small;"><span style="font-weight: normal;">Each time pop up runs in O(logN)</span></span></li>
+<li><span style="font-size: small;"><span style="font-weight: normal;">Total time complexity is </span>O(N)+O(K*logN)</span></li>
+<li><span style="font-size: small;"><span style="font-weight: normal;">(If we maintain a heap with fixed size of K elements, then there is no need to build up the entire heap and each insertion runs in O(logK). Thus the total complexity is </span>O(N*logK)</span></li>
+</ul>
+</ul>
+<div>
+<span style="font-size: small;"><span style="font-weight: normal;">Compare the two method, we can find if the K is small like 20, the second method using a heap would be better. If the N is big and so is the K like 100000 then QuickSelect could be better.</span></span></div>
+<div>
+<span style="font-size: small;"><span style="font-weight: normal;"><br /></span></span></div>
+<div>
+<span style="font-size: small;"><span style="font-weight: normal;">Following is the implementation for both algorithms.</span></span></div>
+<div>
+<span style="font-size: small;"><span style="font-weight: normal;"><br /></span></span></div>
+<span style="font-size: large;"><br /></span></h3>
+<script src="https://gist.github.com/fmars/214cfa54bf5ea1e71afd.js"></script>
+
+
+
+  </body>
+</html>
