@@ -2,6 +2,11 @@ from flask import Flask, render_template, Markup
 from werkzeug.routing import BaseConverter
 import os
 import logging
+
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
 app = Flask(__name__)
 
 class RegexConverter(BaseConverter):
@@ -32,19 +37,20 @@ def read_file_tree(path):
     baseName = os.path.basename(fileName)
     showName = ""
     showDate = ""
+    num = 0
     if baseName != "write":
         if os.path.isdir(path):
-            if len(baseName.split("-")) != 2:
-                return dict(baseName=baseName, showName="error", showDate="", children=[])
-            [showName, showDate] = baseName.split("-")
+            if len(baseName.split("-")) != 3:
+                return dict(baseName=baseName, showName="error", showDate="", children=[], num = 0)
+            [num, showName, showDate] = baseName.split("-")
             showName = showName.replace("_", " ")
         else:
             noExtname = baseName[:-5]
-            if len(noExtname.split("-")) != 2:
-                return dict(baseName=baseName, showName="error", showDate="", children=[])
-            [showName, showDate] = noExtname.split("-")
+            if len(noExtname.split("-")) != 3:
+                return dict(baseName=baseName, showName="error", showDate="", children=[], num = 0)
+            [num, showName, showDate] = noExtname.split("-")
         
-    tree = dict(baseName=baseName, showName=showName, showDate=showDate, children=[])
+    tree = dict(baseName=baseName, showName=showName, showDate=showDate, children=[], num=int(num))
     try: lst = os.listdir(path)
     except OSError:
         pass #ignore errors
@@ -52,9 +58,6 @@ def read_file_tree(path):
         for name in lst:
             fn = os.path.join(path, name)
             tree['children'].append(read_file_tree(fn))
-    def cmp(showDate):
-        app.logger.debug(showDate)
-        [month, year] = showDate.split(".")
-        return year + month
-    tree['children'] = sorted(tree['children'], key = lambda item: cmp(item["showDate"]))
+    if tree["children"]:
+        tree['children'] = sorted(tree['children'], key = lambda item: item["num"])
     return tree
