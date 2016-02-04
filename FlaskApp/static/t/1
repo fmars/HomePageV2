@@ -14,3 +14,6 @@ sudo chown -R -v ec2-user /var/www/
 TODO
 contact me and leave comments
 python global variable, with statement
+
+
+ssh -i "test_key_pair.pem" ubuntu@ec2-54-200-148-54.us-west-2.compute.amazonaws.com
