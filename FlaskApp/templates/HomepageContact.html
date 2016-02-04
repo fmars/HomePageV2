@@ -1,14 +1,14 @@
 {% extends "HomepageBase.html" %}
 
 {% block home_page_body %}
-<h2>Comments</h2>
+<h2 class='title-fmars'>Comments</h2>
 {% for pair in comments %}
 	<p>{{pair.date}}: {{pair.name}}</p>
 	<p>{{pair.content}}</p>
-	<p>------------------------------------------------</p>
+	<p>-----------------------------------------------------------------------------------------------------------</p>
 {% endfor %}
 
-<h2 style="margin-top:55px">Leave yours</h2>
+<h2 style="margin-top:55px" class='title-fmars'>Leave yours</h2>
 <form class="form-horizontal" action="comment" method="post">
   <div class="form-group">
     <label	class="col-sm-1 control-label">Name</label>

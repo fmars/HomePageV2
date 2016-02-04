@@ -1,0 +1,16 @@
+ec2-user@ec2-54-201-121-187.us-west-2.compute.amazonaws.com
+ubuntu@ec2-54-200-148-54.us-west-2.compute.amazonaws.com
+
+winscp
+ec2-54-200-148-54.us-west-2.compute.amazonaws.com
+ubuntu
+sudo chown -R -v ec2-user /var/www/
+
+54.200.148.54
+
+
+
+
+TODO
+contact me and leave comments
+python global variable, with statement
