@@ -2,59 +2,56 @@
 <html>
   <head>
     <title> Fmars.me | Homepage - Jiacheng Feng  </title>
-	<link rel="shortcut icon" type="image/x-icon" href="static/stephen.ico" media="screen" />
-	<meta name="description" content="Fmars HomePage. I'm now a Software Engineer in Facebook. 
-	I believe that Inner happiness comes from self-sacrifice" />
-	<meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage, Facebook, Software Engineer" />
-	<meta name="author" content="Jiacheng Feng， 冯嘉程" />
-
-	<meta property="og:title" content="Fmars.me" />
-	<meta property="og:type" content="homepage" />
-	<meta property="og:url" content="http://fmars.me" />
-
-	<META http-equiv="Content-Type" content="text/html; charset=utf-8">    
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
-	<link rel="stylesheet" href="static/css/HomepageBase.css"> 
+    <link rel="shortcut icon" type="image/x-icon" href="static/stephen.ico" media="screen" />
+    <meta name="description" content="Fmars HomePage. I'm now a Software Engineer in Facebook.
+      I believe that Inner happiness comes from self-sacrifice" />
+    <meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage, Facebook, Software Engineer" />
+    <meta name="author" content="Jiacheng Feng， 冯嘉程" />
+    <meta property="og:title" content="Fmars.me" />
+    <meta property="og:type" content="homepage" />
+    <meta property="og:url" content="http://fmars.me" />
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/HomepageBase.css">
   </head>
-
   <body>
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<div class="row">
-						<div class="col-md-2"></div>
-							<div class="col-md-6">
-								<ul class="nav navbar-nav">
-									{% block home_page_nav %}
-										<li class="navbar_font"><a href="me" >Me</a></li>
-										<li class="navbar_font"><a href="write">Write</a></li>
-										<li class="navbar_font"><a href="read">Read</a></li>
-										<li class="navbar_font"><a href="contact">Contact</a></li>
-									{% endblock %}
-								</ul>
-							</div>
-					</div>	
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
-		
-		{% block home_page_header %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <ul class="nav navbar-nav">
+                {% block home_page_nav %}
+                <li class="navbar_font"><a href="me" >Me</a></li>
+                <li class="navbar_font"><a href="write">Write</a></li>
+                <li class="navbar_font"><a href="read">Read</a></li>
+                <li class="navbar_font"><a href="xtodo">Xtodo</a></li>
+                <li class="navbar_font"><a href="contact">Contact</a></li>
+                {% endblock %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+    {% block home_page_header %}
     <h1 id="name" align='middle'>Fmars</h1>
     <p id="belief" align='middle'><em>Inner happiness comes from self-sacrifice</em></p>
-		{% endblock %}
-	
+    {% endblock %}
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-6">
-	    {% block home_page_body %}
-			{% endblock %}
+        {% block home_page_body %}
+        {% endblock %}
       </div>
-
       <div class="col-md-3">
         <div id="find-me-at">
           <ul>
-			<li><a target="_blank" href="https://github.com/fmars" >GitHub</a></li>
+            <li><a target="_blank" href="https://github.com/fmars" >GitHub</a></li>
             <li><a target="_blank" href="http://fmarss.blogspot.com/">Blogger</a></li>
             <li><a target="_blank" href="http://www.linkedin.com/pub/jiacheng-feng/41/63b/3a6">LinkedIn</a></li>
           </ul>
@@ -64,8 +61,7 @@
         </div>
       </div>
     </div>
-	
-	{% block home_page_footer %}
-	{% endblock %}
+    {% block home_page_footer %}
+    {% endblock %}
   </body>
 </html>

@@ -4,6 +4,7 @@ from werkzeug.routing import BaseConverter
 import os
 import time
 import logging
+import sqlite3
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -33,6 +34,12 @@ def render_homepage_write():
 def render_homepage_read():
     app.logger.debug("read rendered")
     return render_template("HomepageRead.html")    
+
+@app.route("/contact")
+def render_homepage_xtodo():
+    app.logger.debug("xtodo rendered")
+    # comments = get_comments()
+    return render_template("HomepageXtodo.html")#comments=comments)
    
 @app.route("/contact")
 def render_homepage_contact():
@@ -75,6 +82,22 @@ def get_comments():
     return comments
     
 def store_comment(name, content):
+    conn = sqlite3.connect("/var/www/HomePageV2/FlaskApp.db")
+    cur = conn.cursor()
+    # Create table
+    c.execute('''CREATE TABLE stocks
+                         (date text, trans text, symbol text, qty real, price real)''')
+
+    # Insert a row of data
+    c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
+    # Save (commit) the changes
+    conn.commit()
+
+    # We can also close the connection if we are done with it.
+    # Just be sure any changes have been committed or they will be lost.
+    conn.close()
+
     date = time.strftime("%x")
     data = "@@@".join([name, content, date])
     delimeter = "###"
