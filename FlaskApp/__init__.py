@@ -1,15 +1,28 @@
 from flask import Flask, render_template, Markup
 from flask import request, redirect
+from flask import session, g, url_for,abort, flash
 from werkzeug.routing import BaseConverter
+from contextlib import closing
 import os
 import time
 import logging
 import sqlite3
 import sys
+import db_helper
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
 app = Flask(__name__)
+
+# Load default config and override config from an environment variable
+app.config.update(dict(
+    DATABASE=os.path.join(app.root_path, 'db/app.db'),
+    DEBUG=True,
+    SECRET_KEY='development key',
+    USERNAME='admin',
+    PASSWORD='default'
+))
+app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 class RegexConverter(BaseConverter):
     def __init__(self, url_map, *items):
@@ -35,11 +48,15 @@ def render_homepage_read():
     app.logger.debug("read rendered")
     return render_template("HomepageRead.html")    
 
-@app.route("/contact")
+@app.route("/xtodo")
 def render_homepage_xtodo():
     app.logger.debug("xtodo rendered")
-    # comments = get_comments()
-    return render_template("HomepageXtodo.html")#comments=comments)
+    dbPath = os.path.join(app.root_path, 'db/sm.db')
+    db = db_helper.get_db(dbPath)
+    cur = db.execute('select content, time, res from entries order by id desc')
+    entries = cur.fetchall()
+    app.logger.debug(str(entries))
+    return render_template("HomepageXtodo.html", entries=entries)
    
 @app.route("/contact")
 def render_homepage_contact():
@@ -63,24 +80,12 @@ if __name__ == "__main__":
     app.run(debug=True)
     
 def get_comments():
-    delimeter = "###"
-    db_path = "/var/www/HomePageV2/FlaskApp/static/comments/comments"
-    data = ""
-    with open(db_path, "r") as file:
-        data = file.read()
-    
-    parts = data.split(delimeter)
-    app.logger.debug(parts)
-    comments = []
-    for part in parts:
-        if len(part.split("@@@")) != 3:
-            continue
-        [name, content, date] = part.split("@@@")
-        pair = dict(name=name, content=content, date=date)
-        comments.append(pair)
-    app.logger.debug(comments)
-    return comments
-    
+    db = db_helper.get_db(app.config['DATABASE'])
+    sql = 'select name, content, date from comments order by id desc'
+    cur = db.execute(sql)
+    entries = cur.fetchall()
+    return entries
+   
 def store_comment(name, content):
     conn = sqlite3.connect("/var/www/HomePageV2/FlaskApp.db")
     cur = conn.cursor()
