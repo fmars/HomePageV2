@@ -1,14 +1,25 @@
 {% extends "HomepageBase.html" %}
 
 {% block home_page_body %}
+<div>
+  <h2 class='title-fmars'>Contact Me</h2>
+  <p>Feel free to get in touch with <b>fmarsf at gmail dot com</b></p>
+  <p style="margin-button:55px"></p>
+</div>
+<hr>
+
 <h2 class='title-fmars'>Comments</h2>
 {% for pair in comments %}
 	<p>{{pair.date}}: {{pair.name}}</p>
 	<p>{{pair.content}}</p>
 	<p>-----------------------------------------------------------------------------------------------------------</p>
 {% endfor %}
+<hr>
 
-<h2 style="margin-top:55px" class='title-fmars'>Leave yours</h2>
+<h2 style="margin-top:55px" class='title-fmars'>Leave your comments</h2>
+{% for message in get_flashed_messages() %}
+  <div class="flash">{{ message }}</div>
+{% endfor %}
 <form class="form-horizontal" action="comment" method="post">
   <div class="form-group">
     <label	class="col-sm-1 control-label">Name</label>
@@ -28,17 +39,4 @@
     </div>
   </div>
 </form>
-{% endblock %}
-
-{% block home_page_footer %}
-<div class="row">
-	<div id="contact-me">
-		<div class="col-md-2"></div>
-		<div class="col-md-6">
-					<h2 class='title-fmars'>Contact Me</h2>
-					<p>Feel free to get in touch with <b>fmarsf at gmail dot com</b></p>
-					<p style="margin-button:55px></p>
-		</div>
-	</div>
-</div>
 {% endblock %}

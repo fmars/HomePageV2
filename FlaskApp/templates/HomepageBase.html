@@ -32,6 +32,19 @@
                 {% endblock %}
               </ul>
             </div>
+            <div class="col-md-2">
+              <div class="metanav">
+                {% if not session.logged_in %}
+                  <a href="{{ url_for('login') }}">log in</a>
+                {% else %}
+                Hi {{ session.user }},
+                <a href="{{ url_for('logout') }}"> logout</a>
+                {% endif %}
+                {% for message in get_flashed_messages() %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+              </div>
+            </div>
           </div>
         </div>
         <!-- /.navbar-collapse -->

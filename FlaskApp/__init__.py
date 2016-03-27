@@ -8,6 +8,7 @@ import os
 import sys
 import db_helper
 import file_helper
+import login_helper
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -19,8 +20,6 @@ app.config.update(dict(
     WRITE=os.path.join(app.root_path, 'static/write'),
     DEBUG=True,
     SECRET_KEY='development key',
-    USERNAME='admin',
-    PASSWORD='default'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -32,23 +31,23 @@ app.url_map.converters['regex'] = RegexConverter
 
 @app.route("/")
 @app.route("/me")
-def render_homepage_me():
+def homepage_me():
     app.logger.debug("me rendered")
     return render_template("HomepageMe.html")
 	
 @app.route("/write")
-def render_homepage_write():
+def homepage_write():
     app.logger.debug("write rendered")
     file_tree = file_helper.read_file_tree(app.config['WRITE'])
     return render_template("HomepageWrite.html", file_tree = file_tree)
     
 @app.route("/read")
-def render_homepage_read():
+def homepage_read():
     app.logger.debug("read rendered")
     return render_template("HomepageRead.html")    
 
 @app.route("/xtodo")
-def render_homepage_xtodo():
+def homepage_xtodo():
     app.logger.debug("xtodo rendered")
     dbPath = os.path.join(app.root_path, 'db/sm.db')
     db = db_helper.get_db(dbPath)
@@ -58,7 +57,7 @@ def render_homepage_xtodo():
     return render_template("HomepageXtodo.html", entries=entries)
    
 @app.route("/contact")
-def render_homepage_contact():
+def homepage_contact():
     app.logger.debug("contact rendered")
     comments = db_helper.get_comments(app.config['DATABASE'])
     return render_template("HomepageContact.html", comments=comments)
@@ -76,6 +75,28 @@ def comment():
         db_helper.store_comment(app.config['DATABASE'], name, content)
         flash("Comment posted.")
     return redirect("contact")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if login_helper.login_check(username, password):
+            session['logged_in'] = True
+            session['user'] = request.form['username']
+            flash('You were logged in')
+            app.logger.debug(username + " logged in")
+            return redirect(url_for('homepage_me'))
+        else:
+            error = "Username/password incorrect"
+    return render_template('login.html', error=error)
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('You were logged out')
+    return redirect(url_for('homepage_me'))
 
 @app.teardown_appcontext
 def close_db(error):
