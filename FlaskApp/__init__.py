@@ -115,7 +115,7 @@ def logout():
     session.pop('logged_in', None)
     session.pop('user', None)
     flash('You were logged out')
-    return redirect(url_for('homepage_me'))
+    return redirect(request.referrer)
 
 @app.teardown_appcontext
 def close_db(error):
