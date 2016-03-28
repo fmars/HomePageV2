@@ -37,3 +37,22 @@ def store_comment(dbPath, name, content):
             [name, content, date])
     db.commit()
 
+def xtodo_store_entry(dbPath, user, todo, detail):
+    db = get_db(dbPath)
+    date = time.strftime("%x")
+    res = "none"
+    db.execute('insert into xtodo (user,todo,detail,date,res) values (?,?,?,?,?)',
+            [user, todo, detail, date, res])
+    db.commit()
+
+def xtodo_get_entries(dbPath):
+    db = get_db(dbPath)
+    sql = 'select id,user,todo,detail,res,date from xtodo order by id desc'
+    cur = db.execute(sql)
+    entries = cur.fetchall()
+    return entries
+
+def xtodo_update_res(dbPath, id, res):
+    db = get_db(dbPath)
+    db.execute('update xtodo set res=? where id=?', [res, id])
+    db.commit()

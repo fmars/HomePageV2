@@ -46,15 +46,33 @@ def homepage_read():
     app.logger.debug("read rendered")
     return render_template("HomepageRead.html")    
 
-@app.route("/xtodo")
+@app.route("/xtodo", methods=['GET', 'POST'])
 def homepage_xtodo():
     app.logger.debug("xtodo rendered")
-    dbPath = os.path.join(app.root_path, 'db/sm.db')
-    db = db_helper.get_db(dbPath)
-    cur = db.execute('select content, time, res from entries order by id desc')
-    entries = cur.fetchall()
-    app.logger.debug(str(entries))
+    if request.method == 'POST':
+        user = session['user']
+        todo = request.form['todo']
+        detail = request.form['detail']
+        if user and todo:
+            db_helper.xtodo_store_entry(app.config['DATABASE'], user, todo, detail)
+            flash("Your todo added")
+    entries = db_helper.xtodo_get_entries(app.config['DATABASE'])
     return render_template("HomepageXtodo.html", entries=entries)
+
+@app.route("/xtodo_update_res", methods=['GET', 'POST'])
+def xtodo_update_res():
+    app.logger.debug("xtodo update res")
+    id = request.form['id']
+    user = request.form['user']
+    if not 'user' in session or user != session['user']:
+        flash("don't change others todo")
+    elif not id:
+        flash("please click again")
+    else:
+        id = int(id)
+        res = request.form['res']
+        db_helper.xtodo_update_res(app.config['DATABASE'], id, res)
+    return redirect("xtodo")
    
 @app.route("/contact")
 def homepage_contact():
@@ -95,6 +113,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
+    session.pop('user', None)
     flash('You were logged out')
     return redirect(url_for('homepage_me'))
 
