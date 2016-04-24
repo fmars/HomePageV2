@@ -1,7 +1,8 @@
+<!--author mumu-->
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Fmars.me | Homepage - Jiacheng Feng  </title>
+    <title> Login Page</title>
     <link rel="shortcut icon" type="image/x-icon" href="static/stephen.ico"     media="screen" />
     <meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage,     Facebook, Software Engineer" />
     <meta name="author" content="Jiacheng Feng， 冯嘉程" />
@@ -11,34 +12,33 @@
     <META http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/login.css">
- </head>
- <body>
+  </head>
+  <body>
     <div class="container-fluid">
-	<div class="row-fluid" >
-		<div class="span12">
-			<ul class="nav nav-tabs">
-				<li class="dropdown pull-right">
-					<a  href="#">Register</a>
-				</li>
-			</ul>
-		</div>
+      <div class="row-fluid" >
+	<div class="span12">
+	  <ul class="nav nav-tabs">
+	    <li class="dropdown pull-right">
+	      <a  href="#">Register</a>
+	    </li>
+	  </ul>
 	</div>
-	<div class="row-fluid" style="margin-top:55px">
-		<div class="span2"></div>
-		<div class="span4">
-		</div>
-		<div class="span4">
-		<form class="form-signin" id="login_form" name="login_form" method="post" action="check_user_login">       
-			<h2 class="form-signin-heading">Login</h2>
-			<input type="text" class="form-control" name="username" id="username" placeholder="Email/Username" required="" />
-			<input type="password" class="form-control" name="password" id="password" placeholder="password" required=""/><br />      
-			<label class="checkbox">
-				<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">remember me
-			</label>
-			<button class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="login" id="login_btn">Login</button> <br />
-		</form>
-		</div>
+      </div>
+      <div class="row-fluid" style="margin-top:55px">
+	<div class="span2"></div>
+	<div class="span4"></div>
+	<div class="span4">
+	  <form class="form-signin" id="login_form" name="login_form" action="{{ url_for('login') }}" method="post">       
+	    <h2 class="form-signin-heading">Login</h2>
+	    <input type="text" class="form-control" name="username" id="username" placeholder="Email/Username" required="" />
+	    <input type="password" class="form-control" name="password" id="password" placeholder="password" required=""/>
+	    <br />      
+	    {% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
+	    <br />
+	    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="login" id="login_btn">Login</button> <br />
+	  </form>
 	</div>
-</div>
-</body>
-</html>
+      </div>
+    </div>
+  </body>
+<html>
