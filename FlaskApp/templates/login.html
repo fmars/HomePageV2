@@ -15,18 +15,11 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row-fluid" >
-	<div class="span12">
-	  <ul class="nav nav-tabs">
-	    <li class="dropdown pull-right">
-	      <a  href="#">Register</a>
-	    </li>
-	  </ul>
-	</div>
-      </div>
       <div class="row-fluid" style="margin-top:55px">
 	<div class="span2"></div>
-	<div class="span4"></div>
+	<div class="span4">
+	  <img alt="180*160" id="pic" src="../static/img/login_logo.jpg" class="img-rounded"/>
+        </div>
 	<div class="span4">
 	  <form class="form-signin" id="login_form" name="login_form" action="{{ url_for('login') }}" method="post">       
 	    <h2 class="form-signin-heading">Login</h2>
