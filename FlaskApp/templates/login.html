@@ -1,11 +1,37 @@
-<h2>Login</h2>
-  {% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('login') }}" method="post">
-    <dl>
-      <dt>Username:
-      <dd><input type="text" name="username">
-      <dt>Password:
-      <dd><input type="password" name="password">
-      <dd><input type="submit" value="Login">
-    </dl>
-  </form>
+<!--author mumu-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="static/stephen.ico"     media="screen" />
+    <meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage,     Facebook, Software Engineer" />
+    <meta name="author" content="Jiacheng Feng， 冯嘉程" />
+    <meta property="og:title" content="Fmars.me" />
+    <meta property="og:type" content="homepage" />
+    <meta property="og:url" content="http://fmars.me" />
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/login.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row" style="margin-top:150px">
+	<div class="col-md-2"></div>
+	<div class="col-md-4">
+	  <img id="pic" src="../static/img/login_logo.jpg" class="img-rounded"/>
+        </div>
+	<div class="col-md-4">
+	  <form class="form-signin" id="login_form" name="login_form" action="{{ url_for('login') }}" method="post">       
+	    <h2 class="form-signin-heading">Login</h2>
+	    <input type="text" class="form-control" name="username" id="username" placeholder="Email/Username" required="" />
+	    <input type="password" class="form-control" name="password" id="password" placeholder="password" required=""/>
+	    <br />      
+	    {% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
+	    <br />
+	    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="login" id="login_btn">Login</button> <br />
+	  </form>
+	</div>
+      </div>
+    </div>
+  </body>
+<html>
