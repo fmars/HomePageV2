@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Login Page</title>
+    <title> Login</title>
     <link rel="shortcut icon" type="image/x-icon" href="static/stephen.ico"     media="screen" />
     <meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage,     Facebook, Software Engineer" />
     <meta name="author" content="Jiacheng Feng， 冯嘉程" />
@@ -15,12 +15,12 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row-fluid" style="margin-top:55px">
-	<div class="span2"></div>
-	<div class="span4">
-	  <img alt="180*160" id="pic" src="../static/img/login_logo.jpg" class="img-rounded"/>
+      <div class="row" style="margin-top:150px">
+	<div class="col-md-2"></div>
+	<div class="col-md-4">
+	  <img id="pic" src="../static/img/login_logo.jpg" class="img-rounded"/>
         </div>
-	<div class="span4">
+	<div class="col-md-4">
 	  <form class="form-signin" id="login_form" name="login_form" action="{{ url_for('login') }}" method="post">       
 	    <h2 class="form-signin-heading">Login</h2>
 	    <input type="text" class="form-control" name="username" id="username" placeholder="Email/Username" required="" />
