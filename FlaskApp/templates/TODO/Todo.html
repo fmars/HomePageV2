@@ -124,7 +124,10 @@
   {% endif %}
   <tr class="{{state}}">
     <td>{{ entry.date }}</td>
-    <td>{{ entry.user }}</td>
+    <td>
+        <img src="{{ user_icon_path }}{{ entry.user }}" height="15" width="20">
+        {{ entry.user }}
+    </td>
     <td>
       <a href="#" data-toggle="tooltip" title="{{ entry.detail }}"> {{ entry.todo }}</a>
     </td>

@@ -58,7 +58,9 @@ def homepage_xtodo():
             db_helper.xtodo_store_entry(app.config['DATABASE'], user, todo, detail)
             flash("Your todo added")
     entries = db_helper.xtodo_get_entries(app.config['DATABASE'])
-    return render_template("TODO/Todo.html", entries=entries)
+    user_icon_path = 'static/img/user_photos/'
+    return render_template("TODO/Todo.html", entries=entries, 
+            user_icon_path=user_icon_path)
 
 @app.route("/xtodo_update_res", methods=['GET', 'POST'])
 def xtodo_update_res():
