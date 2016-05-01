@@ -6,9 +6,9 @@ from contextlib import closing
 import logging
 import os
 import sys
-import db_helper
-import file_helper
-import login_helper
+import code.db_helper as db_helper
+import code.file_helper as file_helper
+import code.login_helper as login_helper
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -57,7 +57,7 @@ def homepage_xtodo():
             db_helper.xtodo_store_entry(app.config['DATABASE'], user, todo, detail)
             flash("Your todo added")
     entries = db_helper.xtodo_get_entries(app.config['DATABASE'])
-    return render_template("HomepageXtodo.html", entries=entries)
+    return render_template("TODO/HomepageXtodo.html", entries=entries)
 
 @app.route("/xtodo_update_res", methods=['GET', 'POST'])
 def xtodo_update_res():
