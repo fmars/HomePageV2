@@ -5,3 +5,4 @@
 Creating a todo will be 1. Succ or fail one entry will receive either position or negative of correspnding score which depends on the 
 entry's level and num of days fields. Num of days should be exponetially corelated with score.
 - Display user's statistic data such as todo entries created in last month, succ rate, etc.
+- Each user has icon photo
