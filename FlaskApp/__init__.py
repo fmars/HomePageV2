@@ -53,11 +53,12 @@ def homepage_xtodo():
         user = session['user']
         todo = request.form['todo']
         detail = request.form['detail']
+        app.logger.debug(str(request.form))
         if user and todo:
             db_helper.xtodo_store_entry(app.config['DATABASE'], user, todo, detail)
             flash("Your todo added")
     entries = db_helper.xtodo_get_entries(app.config['DATABASE'])
-    return render_template("TODO/HomepageXtodo.html", entries=entries)
+    return render_template("TODO/Todo.html", entries=entries)
 
 @app.route("/xtodo_update_res", methods=['GET', 'POST'])
 def xtodo_update_res():
