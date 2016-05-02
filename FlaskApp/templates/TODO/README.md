@@ -6,3 +6,4 @@ Creating a todo will be 1. Succ or fail one entry will receive either position o
 entry's level and num of days fields. Num of days should be exponetially corelated with score.
 - [ ] Display user's statistic data such as todo entries created in last month, succ rate, etc.
 - [x] Each user has icon photo
+- [ ] Along with more and more todo entries, we need pagedly render them
