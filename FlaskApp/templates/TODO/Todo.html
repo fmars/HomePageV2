@@ -122,6 +122,7 @@
       <th>Date</th>
       <th>User</th>
       <th>Todo</th>
+      <th>Days</th>
       <th>Level</th>
       <th>Result</th>
   </tr>
@@ -156,6 +157,9 @@
     </td>
     <td>
       <a href="#" data-toggle="tooltip" title="{{ entry.detail }}"> {{ entry.todo }}</a>
+    </td>
+    <td>
+      {{ entry.days }}
     </td>
     <td>
       {{ level }}
