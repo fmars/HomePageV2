@@ -13,5 +13,9 @@ create table if not exists xtodo (
       detail text,
       res text not null,
       date text not null
+      days int,
+      auto_fail bool,
+      email_notif bool,
+      level int
 );
 

@@ -6,11 +6,14 @@
 {% block home_page_body %}
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 <script type="text/javascript">
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip();
   });
 </script>
+
 <script>
   function toggleAdvancedDiv() {
       $id = 'advancedDiv';
@@ -21,6 +24,15 @@
           document.getElementById($id).style.display='none';
   }
 </script>
+
+<script>
+  $(document).ready(function(){
+          $('#todoTable').DataTable( {
+              "order": []
+              });
+  });
+</script>
+
 {% for message in get_flashed_messages() %}
 <div class="alert alert-warning">
   <strong>Warning!</strong> {{ message }}
@@ -60,10 +72,10 @@
       <div class="col-md-6">
         <label> Difficulty Level</label>
         <select name='level'>
-          <option value="normal" selected="selected">Normal</option>
-          <option value="hard">Hard</option>
-          <option value="tough">Tough</option>
-          <option value="impossible">Impossible</option>
+          <option value="1" selected="selected">Normal</option>
+          <option value="2">Hard</option>
+          <option value="3">Tough</option>
+          <option value="4">Impossible</option>
         </select>
       </div>
     </div>
@@ -92,7 +104,7 @@
 
     <div class="form-group">
       <div class=" col-sm-2">
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-primary btn-s">Submit</button>
       </div>
     </div>
 </form>
@@ -102,19 +114,22 @@
 <p>
 <p>Contact fmarsf at gmail do com to sign up.</p>
 {% endif %}
+
 <hr style="margin-bottom:45px">
-<table class="table table-condensed table-striped" width="200">
-  <col width="100">
-  <col width="100">
-  <col width="350">
-  <col width="100">
-  <tr>
-    <th>Date</th>
-    <th>User</th>
-    <th>Todo</th>
-    <th>Result</th>
+<table id='todoTable' class="table table-condensed table-striped" width="700">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>User</th>
+      <th>Todo</th>
+      <th>Level</th>
+      <th>Result</th>
   </tr>
+  </thead>
+
+  <tbody>
   {% for entry in entries %}
+
   {% if entry.res == "none" %}
   {% set state = "warning" %}
   {% elif entry.res == "Done" %}
@@ -122,6 +137,17 @@
   {% elif entry.res == "Fail" %}
   {% set state = "active" %}
   {% endif %}
+
+  {% if entry.level == 1 %}
+  {% set level = "Norm" %}
+  {% elif entry.level == 2 %}
+  {% set level = "Hard" %}
+  {% elif entry.level == 3 %}
+  {% set level = "Tough" %}
+  {% elif entry.level == 4 %}
+  {% set level = "Impo" %}
+  {% endif %}
+
   <tr class="{{state}}">
     <td>{{ entry.date }}</td>
     <td>
@@ -130,6 +156,9 @@
     </td>
     <td>
       <a href="#" data-toggle="tooltip" title="{{ entry.detail }}"> {{ entry.todo }}</a>
+    </td>
+    <td>
+      {{ level }}
     </td>
     <td>
       {% if entry.res == "none" %}
@@ -153,5 +182,6 @@
     </td>
   </tr>
   {% endfor %}
+  </tbody>
 </table>
 {% endblock %}

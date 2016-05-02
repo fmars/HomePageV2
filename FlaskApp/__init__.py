@@ -52,10 +52,16 @@ def homepage_xtodo():
     if request.method == 'POST':
         user = session['user']
         todo = request.form['todo']
+        days = request.form['days']
         detail = request.form['detail']
+        level = request.form['level']
+        email = request.form['email']
+        auto_fail = request.form['autoFail']
         app.logger.debug(str(request.form))
         if user and todo:
-            db_helper.xtodo_store_entry(app.config['DATABASE'], user, todo, detail)
+            db_helper.xtodo_store_entry(app.config['DATABASE'], 
+                    user, todo, days, detail,
+                    level, email, auto_fail)
             flash("Your todo added")
     entries = db_helper.xtodo_get_entries(app.config['DATABASE'])
     user_icon_path = 'static/img/user_photos/'
