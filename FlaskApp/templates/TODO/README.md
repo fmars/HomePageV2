@@ -7,3 +7,4 @@ entry's level and num of days fields. Num of days should be exponetially corelat
 - [ ] Display user's statistic data such as todo entries created in last month, succ rate, etc.
 - [x] Each user has icon photo
 - [x] Along with more and more todo entries, we need pagedly render them
+- [ ] Todo entry details hovercard shold be able to display backspace if user entered it when create the todo entry
