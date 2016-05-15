@@ -6,9 +6,9 @@ from contextlib import closing
 import logging
 import os
 import sys
-import code.db_helper as db_helper
-import code.file_helper as file_helper
-import code.login_helper as login_helper
+import libs.db_helper as db_helper
+import libs.file_helper as file_helper
+import libs.login_helper as login_helper
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
