@@ -8,3 +8,6 @@ entry's level and num of days fields. Num of days should be exponetially corelat
 - [x] Each user has icon photo
 - [x] Along with more and more todo entries, we need pagedly render them
 - [ ] Todo entry details hovercard shold be able to display backspace if user entered it when create the todo entry
+  - add hovercard in todo.html (create a div class="hovercard", and copy the js and css)
+  - when read the todo from database, parse the string into an array in __init__.py homepage_xtodo(), remove the \r\n
+  - in the template, add \<p\>\</p\> to every line in the array
