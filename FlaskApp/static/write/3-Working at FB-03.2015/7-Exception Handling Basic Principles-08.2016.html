@@ -1,0 +1,445 @@
+<!doctype html>
+<html><head><title>Exception handling design</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1, h2, h3, th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+/* Body text */
+body, p, ul, ol, td {
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote, q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a, q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code, pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web", Courier, monospace;
+    background: #f3f3f3;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.parent {
+    font-weight: bold;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #7c7c7c;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    table-layout: fixed;
+    position: relative;
+}
+
+table th, table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #ccc;
+    background: #f0f0f0;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+</style></head><body>
+I'm a Python newbie and I'm working on building a Thrift server by Python recently. I tried to design exception handling component and met several problems about exception handing in Python and Thrift. So I spent some time researching on related topics. I'd like to *share what I found so far, ask your feedbacks and discuss what's the best practice*. I'll list the questions I met, followed by the answers I found.<br/>
+
+<h2 id='VbSACAQTkyw'>Q1. Should I use Exception or ErrorCode?</h2>
+
+Since there are already tons of discussion about this topic and I don't want to cause any debate here, so I'd just list ONLY advantages of Exception, especially for Python, and assume we'll want to use Exception for following discussion.<br/>
+
+<div data-section-style='6'><ul id='VbSACA27QZw'><li id='VbSACAVVoob' class='' value='1'>LBYL vs EAFP principle. (See <a href="https://jeffknupp.com/blog/2013/02/06/write-cleaner-python-use-exceptions/">Jeff Knupp</a> and <a href="http://eli.thegreenplace.net/2008/08/21/robust-exception-handling/">Eli Bendersky</a> articles. I couldn't have said it better myself)
+
+<br/></li><li id='VbSACAYjpto' class=''>Exception can be used to signal condition, rather than only used as error cases and real exceptional cases. For example, an exception will be thrown if use input() method to read from stdin and it already reaches the end of content.
+
+<br/></li><li id='VbSACAn42gA' class=''>Exception is already widely used in Python and hard to avoid. For example, the implementation of iterating a list by for loop is by throwing exception to terminate iteration.
+
+<br/></li><li id='VbSACAnHyM2' class=''>Exception give more flexibility to handle errors. It can break out of multiple nested methods or loops. And handle the problem if anyone can handle and want to handle, rather than any function in the stack having to deal with it.
+
+<br/></li></ul></div><h2 id='VbSACAZCDBE'>Q2. Should a method in Thrift server throw only one type of exception or multiple? </h2>
+
+(More generally, should a library method throw only one or multiple types of exception.)<br/>
+
+Library method should only throw one type of exception. Otherwise it will cause backward compatibility issue. For example if we have a library method defined as<br/>
+<pre><code>def func() throw MyValueErr, MyKeyErr;
+
+//When people use this method, they will need to write something like
+try:
+    func()
+except MyValueErr:
+    do sth
+except MyKeyErr:
+do sth
+</code></pre>
+
+But when someday when you find you'll need to add one more exception type in library method, you change the method as<br/>
+
+<pre><code>def func() throw MyValueErr, MyKeyErr, MyOtherErr;
+</code></pre>
+
+This will be bad because it requires all of your users to change their implementation to handle this extra new exception<br/>
+
+<h2 id='VbSACAj5Lew'>Q3. How to solve the problem above?</h2>
+
+<h2 id='VbSACAi497z'></h2>
+
+Use Exception Hierarchies. Define one top level user defined exception and inherit it to create different sub-type of exceptions. Then your library method will look like<br/>
+
+<pre><code>
+Class MyException(Exception): pass
+Class MyKeyException(MyException):pass
+Class MyValueException(MyException):pass
+def func() throw MyException;
+
+//And what users need to do is only catch your root exception.
+
+try:
+    func()
+except MyException:
+    do sth
+</code></pre>
+
+Then the **next question** will be, should I convert all the exception, such as build-in exceptions, within my method to MyException? Before discussing this, the question I'd like to raise is,<br/>
+
+<h2 id='VbSACA7f8Wc'>Q4. Where should the exceptions be handled?</h2>
+
+I feel two thumb of rules would be<br/>
+
+<div data-section-style='5'><ul id='VbSACA9QgrR'><li id='VbSACA2myRW' class='' value='1'>Handle exceptions at the level that knows how to handle them
+
+<br/></li><li id='VbSACA9qCT1' class=''>Do not expose implementation details with exceptions to caller
+
+<br/></li></ul></div><br/>
+
+How to use those two rules? One details example would be Q5<br/>
+
+<h2 id='VbSACAaP5Le'>Q5. Who should handle DB connection exception</h2>
+
+Follow the examples above, let's say this is our library method now<br/>
+
+<pre><code>
+def func() throw MyException:
+try:
+    dbconn = get_mysql()
+    dbconn.read_data()
+except DBException:
+    raise
+...
+...
+if xxx:
+    raise MyException
+</code></pre>
+
+Who should handle this DBException? My understanding is, our library should handle it rather than throw it one level up to user methods. This is because, we don't want to expose implementation details to caller. User don't need to know and shouldn't know if there is any db exception happened within our library method. And actually user will not know how to handle it unless they know our method implementation details. So we will have 2 options for this,<br/>
+
+<pre><code>
+# Option 1: convert those implementation exception to one
+# kind of FailureException inherited from MyException
+Class MyException(Exception): pass
+Class MyKeyException(MyException):pass
+Class MyValueException(MyException):pass
+Class MyFailureException(MyException):pass
+
+def func() throw MyException:
+try:
+    ...
+    # may raise DBException
+    ...
+    ...
+    # may raise MyValueException
+catch Exception as e:
+    if not isinstance(e, MyException):
+        raise MyFailureException(e)
+
+</code></pre>
+<pre><code>
+//Or if it's Thrift method
+# Option 2: Directly raise it. It will be converted to
+# TApplicationException by default.
+Class MyException(Exception): pass
+Class MyKeyException(MyException):pass
+Class MyValueException(MyException):pass
+def func() throw MyException:
+    ...
+    ...
+    # may raise DBException
+    # may raise MyValueException<br/>
+</code></pre>
+
+The second option should be doable also for client side. When user invoke this method func(), it will need to catch two types of exceptions, MyException and TApplicationException. If MyException was caught, we'll know how to deal with it according to the contract of Thrift method owner. If TApplicationException we will know some error happens in server side and it has been failed or crashed. We should perform on_failure actions accordingly.<br/>
+
+<h2 id='VbSACAxPZnb'>Q6. Try-catch granularity</h2>
+
+(IMHO) Use try-catch clause to contain minimum scope of code where you expect exception may be raised. This improves readability since the original intention will be easier to understand. Also it will help log exception error message if one try-catch clause doesn't contain two places where the same exception may be raised.<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+</body></html>
