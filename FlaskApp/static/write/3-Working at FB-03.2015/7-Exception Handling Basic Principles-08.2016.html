@@ -1,20 +1,23 @@
 <!doctype html>
-<html><head><title>Exception handling design</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
- * Copyright 2014 Quip
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License. You may obtain
- * a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- */
+<html>
+<head>
+    <title> Fmars.me | Homepage - Jiacheng Feng  </title>
+    <link rel="shortcut icon" type="image/x-icon" href="stephen.ico" media="screen" />
+    <meta name="description" content="Fmars HomePage. I'm now a Software Engineer in Facebook. 
+    I believe that Inner happiness comes from self-sacrifice" />
+    <meta name="keywords" content="Jiacheng Feng, Fmars, 冯嘉程， Homepage, Facebook, Software Engineer" />
+  <meta name="author" content="Jiacheng Feng， 冯嘉程" />
 
+    <meta property="og:title" content="Fmars.me" />
+    <meta property="og:type" content="homepage" />
+    <meta property="og:url" content="http://fmars.me" />
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/msg_read.css">
+    <link rel="stylesheet" href="write_fb.css">
+    
+    <meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>
 body {
     font-size: 15px;
     color: #333;
@@ -305,7 +308,11 @@ hr {
     width: 70px;
     margin: 20px auto;
 }
-</style></head><body>
+</style></head>
+<body>
+<h1 id="name" align='middle'>Fmars</h1>
+<p id="belief" align='middle'><em>Inner happiness comes from self-sacrifice</em></p>
+
 I'm a Python newbie and I'm working on building a Thrift server by Python recently. I tried to design exception handling component and met several problems about exception handing in Python and Thrift. So I spent some time researching on related topics. I'd like to *share what I found so far, ask your feedbacks and discuss what's the best practice*. I'll list the questions I met, followed by the answers I found.<br/>
 
 <h2 id='VbSACAQTkyw'>Q1. Should I use Exception or ErrorCode?</h2>
