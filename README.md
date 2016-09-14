@@ -14,4 +14,4 @@ entry's level and num of days fields. Num of days should be exponetially corelat
 - [x] Along with more and more todo entries, we need pagedly render them
 - [ ] Todo entry details hovercard shold be able to display backspace if user entered it when create the todo entry
 - [ ] Should have some template to creat new todo entry instead of each time type the entire details once and once again
-- [ ] Test remote synch up functionality.
+- [x] Test remote synch up functionality.
