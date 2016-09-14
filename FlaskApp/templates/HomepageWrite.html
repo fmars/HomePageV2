@@ -22,7 +22,12 @@
 			{% for dir in file_tree.children %}
 			{% set num = 0 %}
 			<p class="msg_head">
-				&oplus; {{ dir.showName }} 
+                &oplus; 
+                {% if dir.showName == 'Working at FB' %}
+                <a target="_blank" href='http://fmars.me/static/write/3-Working%20at%20FB-03.2015/'> Work at Fb </a>
+                {% else %}
+				{{ dir.showName }} 
+                {% endif %}
 				<span style="font-size:17px; float:right">{{ dir.showDate }}</span>
 			</p>
 			<div class="msg_body">

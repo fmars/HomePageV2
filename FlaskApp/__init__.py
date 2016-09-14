@@ -132,10 +132,10 @@ def logout():
 @app.route('/pull')
 def pull():
     app.logger.debug('git pull request received')
+    import git 
     PATH = '/var/www/HomePageV2'
-    os.chdir(PATH)
-    CMD = 'git pull --verbose'
-    os.system(CMD)
+    g = git.cmd.Git(PATH)
+    g.pull()
     return redirect('/')
 
 @app.teardown_appcontext
