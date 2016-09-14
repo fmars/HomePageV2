@@ -126,6 +126,16 @@ def logout():
     flash('You were logged out')
     return redirect(request.referrer)
 
+# use git pull to synch content in aws host with github
+# which allows to update website server without login into
+# which can be convenient.
+@app.route('/pull')
+def pull():
+    PATH = '/var/www/HomePageV2'
+    os.chdir(PATH)
+    CMD = 'git pull'
+    os.system(CMD)
+
 @app.teardown_appcontext
 def close_db(error):
     db_helper.close_db(error)
