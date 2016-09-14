@@ -131,10 +131,12 @@ def logout():
 # which can be convenient.
 @app.route('/pull')
 def pull():
+    app.logger.debug('git pull request received')
     PATH = '/var/www/HomePageV2'
     os.chdir(PATH)
-    CMD = 'git pull'
+    CMD = 'git pull --verbose'
     os.system(CMD)
+    return redirect('/')
 
 @app.teardown_appcontext
 def close_db(error):
