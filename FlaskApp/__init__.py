@@ -17,6 +17,7 @@ app = Flask(__name__)
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'db/app.db'),
+    READJSON=os.path.join(app.root_path, 'static/read/read.json'),
     WRITE=os.path.join(app.root_path, 'static/write'),
     DEBUG=True,
     SECRET_KEY='development key',
@@ -44,7 +45,11 @@ def homepage_write():
 @app.route("/read")
 def homepage_read():
     app.logger.debug("read rendered")
-    return render_template("HomepageRead.html")    
+    import json
+    with open(app.config['READJSON']) as input_data:
+        read_json = json.load(input_data)
+    read_json = sorted(read_json, key=lambda x: x['id'])
+    return render_template("HomepageRead.html", read_json=read_json)    
 
 @app.route("/xtodo", methods=['GET', 'POST'])
 def homepage_xtodo():

@@ -19,119 +19,19 @@
 	<h2 class='title-fmars'>Readings</h2>
 	<div>
 		<div class="msg_list">
-		
-			<p class="msg_head">&rarr;浪潮之巅<span style="font-size:17px; float:right">03/2015</span></p>
+            {% for ent in read_json %}
+            <p class="msg_head">&rarr; {{ ent['title']|safe }} <span style="font-size:17px; float:right"> {{ ent['date'] }} </span></p>
+            {% for comment in ent['comments'] %}
 			<div class="msg_body">
 				<ul>
-					<li class="msg_body_review">What is the next technical revolution?</li>
+                    <li class="msg_body_review"> {{ comment|safe }}</li>
 				</ul>
 			</div>
-			
-			<p class="msg_head">&rarr;链接、装载与库<span style="font-size:17px; float:right">07/2015</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review">Everything is CPU, Memory and I/Os</li>
-				</ul>
-			</div>
-			
-			<p class="msg_head">&rarr;Effective Modern C++: Improve Your Use of C++11 and C++14<span style="font-size:17px; float:right">09/2015</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review">C++11 is so much amazing so much awesome. And I think it's time to switch to another one, maybe Python, for most of the cases.</li>
-				</ul>
-			</div>
-			
-			<p class="msg_head">&rarr;Learn Vimscript the Hard Way<span style="font-size:17px; float:right">11/2015</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review"><a target="_blank" href="https://github.com/fmars/reasier">Reasier (make Read easier)</a></li>
-				</ul>
-			</div>
-			
-			<p class="msg_head">&rarr;Flask-Python<span style="font-size:17px; float:right">01/2016</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review"><a target="_blank" href="https://github.com/fmars/HomePageV2">HomePageV2</a></li>
-				</ul>
-			</div>
-			
-			<p class="msg_head">&rarr;长生剑， 孔雀翎， 碧玉刀， 多情环， 霸王枪， 拳头<span style="font-size:17px; float:right">02/2016</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review">所以我说的第二种武器，并不是孔雀翎，而是信心！</a></li>
-				</ul>
-			</div>
-
-			<p class="msg_head">&rarr;MapReduce: Simplified Data Processing on Large Clusters<span style="font-size:17px; float:right">03/2016</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review">In a large distributed system, failure on some particular single server, master for example, is unlikely and which may not need to be taken care of specifically. However server failure happened to normal server (network, hardware issue) should be handled as a common scenario.</a></li>
-				</ul>
-			</div>
-
-			<p class="msg_head">&rarr;Learn how Python works and write idiomatic Python<span style="font-size:17px; float:right">03/2016</span></p>
-			<div class="msg_body">
-				<ul>
-                    <li class="msg_body_review">
-                        <a href="https://jeffknupp.com/blog/2013/02/14/drastically-improve-your-python-understanding-pythons-execution-model/">
-                            Understanding Python's execution model/a
-                        </a>
-                    </li>
-					<li class="msg_body_review">
-                        <a href="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/">
-                            Pythonic Object Oriented Language
-                        </a>
-                    </li>
-					<li class="msg_body_review">
-                        <a href="http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/">
-                            Decorator!
-                        </a>
-                    </li>
-					<li class="msg_body_review">
-                        <a href="http://www.tutorialspoint.com/python/python_classes_objects.htm">
-                            Class
-                        </a>
-                        and
-                        <a href="https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/">
-                            Class
-                        </a>
-                    </li>
-					<li class="msg_body_review">
-                        <a href="http://flask.pocoo.org/docs/0.10/tutorial/">
-                            Flask sqlite database
-                        </a>
-                    </li>
-					<li class="msg_body_review">
-                        <a href="https://docs.python.org/2/tutorial/modules.html">
-                            Module
-                        </a>
-                    </li>
-					<li class="msg_body_review">
-                        <ul>
-                            <li>Print function in Python3</li>
-                            <li>Print function in Python3</li>
-                        </ul>
-                    </li>
-				</ul>
-			</div>
-
-			<p class="msg_head">&rarr;regex basics<span style="font-size:17px; float:right">04/2016</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review">http://www.regular-expressions.info/tutorial.html</li>
-					<li class="msg_body_review">http://www.zytrax.com/tech/web/regex.htm</li>
-				</ul>
-			</div>
-
-			<p class="msg_head">&rarr;Design Patter<span style="font-size:17px; float:right">04/2016</span></p>
-			<div class="msg_body">
-				<ul>
-					<li class="msg_body_review">Factory</li>
-				</ul>
-			</div>
-	
-		</div>
-	</div>
+            {% endfor %}
+            {% endfor %}
+        </div>            
+    </div>
+    <a href="https://github.com/fmars/HomePageV2/tree/master/FlaskApp/static/read/read.json">Update it</a>
 {% endblock %}
 
 
