@@ -1,0 +1,9 @@
+Before purchasing Linux Foundation SysAdmin course which costs $500, I decided first to build my old desktop as a server and to serve my homepage. After that if I still find SysAdmin interesting, then I will get that course and exam.
+
+During the process to learn how to set up server, I found SysAdmin is even more interesting than I execpted. The more I did, the more fun I got. Such as scp from my mac to a ubuntu virtual host on my desktop, ssh from virtual host to old destop, etc. 
+
+Basically I set up apache server, flask, ssh server. I also configed Port Forwarding and Static IP Address. Now my old desktop can fully perform as a server. It's now hosting my home page which has been migrated from AWS. After rebind it in Amazon Route53 my donmain name was bind to my desktop as well.
+
+
+TODO:
+Cannot access homepage within local network through public IP. This is due to loopback problem http://wiki.mikrotik.com/wiki/Hairpin_NAT
