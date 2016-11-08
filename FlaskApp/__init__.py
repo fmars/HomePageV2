@@ -39,8 +39,10 @@ def homepage_me():
 @app.route("/write")
 def homepage_write():
     app.logger.debug("write rendered")
-    file_tree = file_helper.read_file_tree(app.config['WRITE'])
-    return render_template("HomepageWrite.html", file_tree = file_tree)
+    # Directly use ftp to show writes
+    return redirect('http://10.0.0.10/static/write/')
+    # file_tree = file_helper.read_file_tree(app.config['WRITE'])
+    # return render_template("HomepageWrite.html", file_tree = file_tree)
     
 @app.route("/read")
 def homepage_read():
