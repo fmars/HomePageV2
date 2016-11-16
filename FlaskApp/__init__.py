@@ -35,15 +35,15 @@ app.url_map.converters['regex'] = RegexConverter
 def homepage_me():
     app.logger.debug("me rendered")
     return render_template("HomepageMe.html")
-	
+
 @app.route("/write")
 def homepage_write():
     app.logger.debug("write rendered")
     # Directly use ftp to show writes
-    return redirect('http://10.0.0.10/static/write/')
+    return redirect('/static/write/')
     # file_tree = file_helper.read_file_tree(app.config['WRITE'])
     # return render_template("HomepageWrite.html", file_tree = file_tree)
-    
+
 @app.route("/read")
 def homepage_read():
     app.logger.debug("read rendered")
@@ -51,7 +51,7 @@ def homepage_read():
     with open(app.config['READJSON']) as input_data:
         read_json = json.load(input_data)
     read_json = sorted(read_json, key=lambda x: x['id'])
-    return render_template("HomepageRead.html", read_json=read_json)    
+    return render_template("HomepageRead.html", read_json=read_json)
 
 @app.route("/xtodo", methods=['GET', 'POST'])
 def homepage_xtodo():
@@ -66,13 +66,13 @@ def homepage_xtodo():
         auto_fail = request.form['autoFail']
         app.logger.debug(str(request.form))
         if user and todo:
-            db_helper.xtodo_store_entry(app.config['DATABASE'], 
+            db_helper.xtodo_store_entry(app.config['DATABASE'],
                     user, todo, days, detail,
                     level, email, auto_fail)
             flash("Your todo added")
     entries = db_helper.xtodo_get_entries(app.config['DATABASE'])
     user_icon_path = 'static/img/user_photos/'
-    return render_template("TODO/Todo.html", entries=entries, 
+    return render_template("TODO/Todo.html", entries=entries,
             user_icon_path=user_icon_path)
 
 @app.route("/xtodo_update_res", methods=['GET', 'POST'])
@@ -89,13 +89,13 @@ def xtodo_update_res():
         res = request.form['res']
         db_helper.xtodo_update_res(app.config['DATABASE'], id, res)
     return redirect("xtodo")
-   
+
 @app.route("/contact")
 def homepage_contact():
     app.logger.debug("contact rendered")
     comments = db_helper.get_comments(app.config['DATABASE'])
     return render_template("HomepageContact.html", comments=comments)
-    
+
 @app.route("/comment", methods = ["POST"])
 def comment():
     app.logger.debug("comment rendered")
@@ -139,7 +139,7 @@ def logout():
 @app.route('/pull')
 def pull():
     app.logger.debug('git pull request received')
-    import git 
+    import git
     PATH = '/var/www/HomePageV2'
     g = git.cmd.Git(PATH)
     g.pull()
