@@ -15,3 +15,41 @@ entry's level and num of days fields. Num of days should be exponetially corelat
 - [ ] Todo entry details hovercard shold be able to display backspace if user entered it when create the todo entry
 - [ ] Should have some template to creat new todo entry instead of each time type the entire details once and once again
 - [x] Test remote synch up functionality.
+
+
+## Set up Homepage on your host
+1. Install apache server
+
+    ```
+    sudo apt-get install apache2
+    ```
+    
+2. [Install pip and Flask ](http://flask.pocoo.org/docs/0.11/installation/#system-wide-installation)
+3. [Install mod_wsgi ](http://flask.pocoo.org/docs/0.11/deploying/mod_wsgi/)  
+4. Download HomePageV2 git 
+
+   ```
+   cd /var/www/
+   git clone https://github.com/fmars/HomePageV2.git
+   ```
+   
+5. Config wsgi
+
+   ```
+   put flaskapp.wsgi file as it is
+   ```
+
+6. Config Apache2
+
+   ``` 
+   # Copy config file from git repo to apache config folder
+   cp $(PATH_TO_HOMEPAGEV2)/FlaskApp.conf /etc/apache2/sites-available/
+   cp $(PATH_TO_HOMEPAGEV2)/FlaskApp.conf /etc/apache2/sites-enabled/
+   ```
+   
+7. Restart apache server
+   
+   ```
+   sudo service apache2 restart
+   ```
+   
