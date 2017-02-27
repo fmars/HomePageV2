@@ -12,7 +12,12 @@ def read_file_tree(path):
             [num, showName, showDate] = baseName.split("-")
             showName = showName.replace("_", " ")
         else:
-            noExtname = baseName[:-5]
+            file_types = ['.html', '.md']
+            noExtname = baseName
+            for file_type in file_types:
+                pos = noExtname.find(file_type)
+                if pos != -1:
+                    noExtname = noExtname[:pos]
             if len(noExtname.split("-")) != 3:
                 return dict(baseName=baseName, showName="error_file", showDate="", children=[], num = 0)
             [num, showName, showDate] = noExtname.split("-")

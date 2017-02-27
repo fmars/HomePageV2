@@ -23,20 +23,14 @@
 			{% set num = 0 %}
 			<p class="msg_head">
                 &oplus; 
-                {% if dir.showName == 'Learn Linux' %}
-                    <a target="_blank" href='https://github.com/fmars/Learn-Linux'> Learn Linux</a>
-                {% elif dir.showName == 'Leetcode' %}
-                    <a target="_blank" href='http://fmarss.blogspot.com/'> Leetcode </a>
-                {% else %}
-                    {{ dir.showName }} 
-                {% endif %}
+	        {{ dir.showName }} 
 				<span style="font-size:17px; float:right">{{ dir.showDate }}</span>
 			</p>
 			<div class="msg_body">
 				{% for file in dir.children %}
 				<p>
 					<a target="_blank" href="static/write/{{ dir.baseName }}/{{ file.baseName }}" style="padding-left:12px">
-					{{ file.showName }}
+					{{ num }}  . {{ file.showName }}
 					<span style="font-size:12px; float:right">
 					{{ file.showDate }}</span></a>
 					{% set num = num + 1 %}
