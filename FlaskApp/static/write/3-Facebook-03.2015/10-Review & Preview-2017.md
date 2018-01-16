@@ -21,5 +21,5 @@
 - Non-technical
 1. Practice technical writting skills. Be able to describe technical problems in a clear and succinct way quickly
 2. Be able to clearly communicate with manager and align on project goals and progresses
-3. Practice to clearly measure and describe the impact and convince others
+3. Practice to clearly measure and describe the impact and sell to others
 4. A lot more but lets first focus on those above
